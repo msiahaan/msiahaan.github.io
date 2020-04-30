@@ -87,7 +87,8 @@ needed by Pelican.
 Done. Your new project is available /home/users/websites/blog
 ```
 
-Beberapa hal yang perlu "dijawab":
+Beberapa hal yang perlu **dijawab**:
+
 1.  Judul/title dari website
 2. Penulis/author dari website
 3.  Zona waktu, saya mengunakan Asia/Kuala_Lumpur
