@@ -88,10 +88,10 @@ Done. Your new project is available /home/users/websites/blog
 ```
 
 Beberapa hal yang perlu "dijawab":
-*  Judul/title dari website
-*  Penulis/author dari website
-*  Zona waktu, saya mengunakan Asia/Kuala_Lumpur
-*  Upload ke GitHub Pages, "y"
+1.  Judul/title dari website
+2. Penulis/author dari website
+3.  Zona waktu, saya mengunakan Asia/Kuala_Lumpur
+4.  Upload ke GitHub Pages, "y"
 
 
 Pelican secara otomatis akan membuat struktur direktori dan berkas konfigurasi yang diperlukan.
