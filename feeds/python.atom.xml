@@ -70,11 +70,13 @@ Switch to a new branch &lt;span class="s1"&gt;&amp;#39;content&amp;#39;&lt;/span
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Beberapa hal yang perlu "dijawab":
-1.  Judul/title dari website
-2. Penulis/author dari website
-3.  Zona waktu, saya mengunakan Asia/Kuala_Lumpur
-4.  Upload ke GitHub Pages, "y"&lt;/p&gt;
+&lt;p&gt;Beberapa hal yang perlu &lt;strong&gt;dijawab&lt;/strong&gt;:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Judul/title dari website&lt;/li&gt;
+&lt;li&gt;Penulis/author dari website&lt;/li&gt;
+&lt;li&gt;Zona waktu, saya mengunakan Asia/Kuala_Lumpur&lt;/li&gt;
+&lt;li&gt;Upload ke GitHub Pages, "y"&lt;/li&gt;
+&lt;/ol&gt;
 &lt;p&gt;Pelican secara otomatis akan membuat struktur direktori dan berkas konfigurasi yang diperlukan.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$  ls
 
