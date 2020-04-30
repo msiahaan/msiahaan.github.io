@@ -10,7 +10,7 @@ Saya mengenal bahasa pemrograman Python sejak kuliah teknik Kimia tahun 2002. Se
 Akan tetapi Python tetap menjadi bahasa pemrograman favorit saya dengan alasan sederhana: filosofi Python sesuai dengan pandangan saya.
 
 ```
-he Zen of Python, by Tim Peters
+The Zen of Python, by Tim Peters
 
 Beautiful is better than ugly.
 Explicit is better than implicit.
