@@ -95,8 +95,15 @@ $ git push origin content
 
 &lt;h2&gt;Membuat Post Pertama&lt;/h2&gt;
 &lt;p&gt;Setelah melalui persiapan panjang, maka saatnya untuk membuat &lt;em&gt;post&lt;/em&gt; pertama menggunakan &lt;em&gt;text editor&lt;/em&gt; favorit: &lt;a href="https://www.sublimetext.com/"&gt;SublimeText&lt;/a&gt;. Anda bebas menggunakan &lt;em&gt;editor&lt;/em&gt; yang Anda suka. Post saya tulis dalam format Markdown (Cek ulang: paket Markdown sudah terinstall atau belum).&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$  &lt;span class="nb"&gt;cd&lt;/span&gt; content
+$  mkdir pages images
+$  subl first-post.md
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Direktori &lt;strong&gt;pages&lt;/strong&gt; untuk menyimpan halaman web statis yang jarang diedit, contohnya di halaman &lt;em&gt;About Us&lt;/em&gt; atau &lt;em&gt;Contact Us&lt;/em&gt;. Direktori &lt;strong&gt;images&lt;/strong&gt; untuk menyimpan berkas-berkas &lt;em&gt;image&lt;/em&gt; yang digunakan dalam &lt;em&gt;post&lt;/em&gt; atau &lt;em&gt;page&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="First Post" src="/images/first-post.png"&gt;&lt;/p&gt;
-&lt;p&gt;Simpan!&lt;/p&gt;
+&lt;p&gt;Simpan.&lt;/p&gt;
 &lt;h2&gt;Publish!&lt;/h2&gt;
 &lt;p&gt;Tentu saja selanjutnya adalah memublikasikan &lt;em&gt;post&lt;/em&gt; perdana saya di &lt;a href="http://pages.github.com"&gt;GitHub Pages&lt;/a&gt;. Begini caranya:&lt;/p&gt;
 &lt;ul&gt;
