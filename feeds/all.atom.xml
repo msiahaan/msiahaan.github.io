@@ -100,7 +100,7 @@ $ git push origin content
 &lt;ul&gt;
 &lt;li&gt;Jalankan Pelican untuk membuat halaman web statis di direktori &lt;strong&gt;content&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$  pelican content -o output -s publishconf
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$  pelican content -o output -s publishconf.py
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
@@ -133,7 +133,7 @@ $  git push origin
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;a href="/images/first-post-view.png"&gt;My First Post View&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="My First Post View" src="/images/first-post-view.png"&gt;&lt;/p&gt;
 &lt;p&gt;Untuk menyunting atau membuat &lt;em&gt;post&lt;/em&gt;, ulangi langkah-langkah pembuatan &lt;em&gt;post&lt;/em&gt; serta &lt;em&gt;publish&lt;/em&gt; di atas. Selamat blogging.&lt;/p&gt;</content><category term="Python"></category><category term="python"></category><category term="github"></category></entry><entry><title>Zen of Python</title><link href="/zen-of-python.html" rel="alternate"></link><published>2020-04-30T19:57:00+08:00</published><updated>2020-04-30T19:57:00+08:00</updated><author><name>msiahaan</name></author><id>tag:None,2020-04-30:/zen-of-python.html</id><summary type="html">&lt;h1&gt;Zen of Python&lt;/h1&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;this&lt;/span&gt;
 &lt;span class="n"&gt;The&lt;/span&gt; &lt;span class="n"&gt;Zen&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;Python&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;by&lt;/span&gt; &lt;span class="n"&gt;Tim&lt;/span&gt; &lt;span class="n"&gt;Peters&lt;/span&gt;
