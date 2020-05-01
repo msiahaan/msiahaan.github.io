@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Bangmico Python Blog</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2020-04-30T19:57:00+08:00</updated><entry><title>Membuat Blog di GitHub</title><link href="/membuat-blog-di-github.html" rel="alternate"></link><published>2020-04-30T19:57:00+08:00</published><updated>2020-04-30T19:57:00+08:00</updated><author><name>msiahaan</name></author><id>tag:None,2020-04-30:/membuat-blog-di-github.html</id><summary type="html">&lt;h1&gt;Membuat Blog dengan Pelican di Github&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Bangmico Python Blog</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2020-05-10T19:57:00+08:00</updated><entry><title>Membuat Blog di GitHub</title><link href="/membuat-blog-di-github.html" rel="alternate"></link><published>2020-05-10T19:57:00+08:00</published><updated>2020-05-10T19:57:00+08:00</updated><author><name>msiahaan</name></author><id>tag:None,2020-05-10:/membuat-blog-di-github.html</id><summary type="html">&lt;h1&gt;Membuat Blog dengan Pelican di Github&lt;/h1&gt;
 &lt;p&gt;&lt;a href="http://github.com"&gt;GitHub&lt;/a&gt; adalah penyedia layanan bagi pemrogram untuk berkolaborasi dalam pengembangan aplikasi. Tim pemrogram dapat meletakkan kode sumber di Github dalam sebuah &lt;em&gt;repository&lt;/em&gt; dan pemrogram lain dapat berkolaborasi melalui &lt;em&gt;clone&lt;/em&gt; dari &lt;em&gt;repository&lt;/em&gt; tersebut.&lt;/p&gt;
 &lt;p&gt;Selain itu &lt;a href="http://github.com"&gt;GitHub&lt;/a&gt; juga menyediakan layanan untuk membuat &lt;em&gt;website&lt;/em&gt; dari repository yang …&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Membuat Blog dengan Pelican di Github&lt;/h1&gt;
 &lt;p&gt;&lt;a href="http://github.com"&gt;GitHub&lt;/a&gt; adalah penyedia layanan bagi pemrogram untuk berkolaborasi dalam pengembangan aplikasi. Tim pemrogram dapat meletakkan kode sumber di Github dalam sebuah &lt;em&gt;repository&lt;/em&gt; dan pemrogram lain dapat berkolaborasi melalui &lt;em&gt;clone&lt;/em&gt; dari &lt;em&gt;repository&lt;/em&gt; tersebut.&lt;/p&gt;
@@ -88,4 +88,84 @@ content  Makefile  output  pelicanconf.py  publishconf.py  tasks.py
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ git add .
 $ git commit -m &lt;span class="s1"&gt;&amp;#39;initial pelican commit to content&amp;#39;&lt;/span&gt;
 $ git push origin content
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Membuat Post Pertama&lt;/h2&gt;
+&lt;p&gt;Setelah melalui persiapan panjang, maka saatnya untuk membuat &lt;em&gt;post&lt;/em&gt; pertama menggunakan &lt;em&gt;text editor&lt;/em&gt; favorit: &lt;a href="https://www.sublimetext.com/"&gt;SublimeText&lt;/a&gt;. Anda bebas menggunakan &lt;em&gt;editor&lt;/em&gt; yang Anda suka. Post saya tulis dalam format Markdown (Cek ulang: paket Markdown sudah terinstall atau belum).&lt;/p&gt;
+&lt;p&gt;&lt;img alt="First Post" src="/images/first-post.png"&gt;&lt;/p&gt;
+&lt;p&gt;Simpan!&lt;/p&gt;
+&lt;h2&gt;Publish!&lt;/h2&gt;
+&lt;p&gt;Tentu saja selanjutnya adalah memublikasikan &lt;em&gt;post&lt;/em&gt; perdana saya di &lt;a href="http://pages.github.com"&gt;GitHub Pages&lt;/a&gt;. Begini caranya:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Jalankan Pelican untuk membuat halaman web statis di direktori &lt;strong&gt;content&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$  pelican content -o output -s publishconf
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Gunakan &lt;strong&gt;ghp-import&lt;/strong&gt; untuk memuat isi direktori &lt;strong&gt;output&lt;/strong&gt; ke cabang &lt;strong&gt;master&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;$&lt;/span&gt;  &lt;span class="n"&gt;ghp&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Pelican site ku&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;no&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;jekyll&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="n"&gt;master&lt;/span&gt; &lt;span class="n"&gt;output&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Push&lt;/em&gt; cabang &lt;strong&gt;master&lt;/strong&gt; lokal ke repo di GitHub&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$  git push origin master
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Commit&lt;/em&gt; dan &lt;em&gt;push&lt;/em&gt; ke cabang &lt;strong&gt;content&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$  git add content
+$  git commit -m &lt;span class="s2"&gt;&amp;quot;buat post pertama: Zen of Python&amp;quot;&lt;/span&gt;
+$  git push origin
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Enjoy Aja!&lt;/h2&gt;
+&lt;p&gt;Nah, sekaran waktunya menikmati Blog baru. Buka browser &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c"&gt;https://username.github.io&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Untuk membuat post baru, ulangi langkah-langkah pembuatan &lt;em&gt;post&lt;/em&gt; serta &lt;em&gt;publis&lt;/em&gt; di atas. Selamat blogging.&lt;/p&gt;</content><category term="Python"></category><category term="python"></category><category term="github"></category></entry><entry><title>Zen of Python</title><link href="/zen-of-python.html" rel="alternate"></link><published>2020-04-30T19:57:00+08:00</published><updated>2020-04-30T19:57:00+08:00</updated><author><name>msiahaan</name></author><id>tag:None,2020-04-30:/zen-of-python.html</id><summary type="html">&lt;h1&gt;Zen of Python&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;this&lt;/span&gt;
+&lt;span class="n"&gt;The&lt;/span&gt; &lt;span class="n"&gt;Zen&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;Python&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;by&lt;/span&gt; &lt;span class="n"&gt;Tim&lt;/span&gt; &lt;span class="n"&gt;Peters&lt;/span&gt;
+
+&lt;span class="n"&gt;Beautiful&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;better&lt;/span&gt; &lt;span class="n"&gt;than&lt;/span&gt; &lt;span class="n"&gt;ugly&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;Explicit&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;better&lt;/span&gt; &lt;span class="n"&gt;than&lt;/span&gt; &lt;span class="n"&gt;implicit&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;Simple&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;better&lt;/span&gt; &lt;span class="n"&gt;than&lt;/span&gt; &lt;span class="nb"&gt;complex&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;Complex&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;better&lt;/span&gt; &lt;span class="n"&gt;than&lt;/span&gt; &lt;span class="n"&gt;complicated&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;Flat&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;better&lt;/span&gt; &lt;span class="n"&gt;than&lt;/span&gt; &lt;span class="n"&gt;nested&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;Sparse&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;better&lt;/span&gt; &lt;span class="n"&gt;than&lt;/span&gt; &lt;span class="n"&gt;dense&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;Readability&lt;/span&gt; &lt;span class="n"&gt;counts&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;Special&lt;/span&gt; &lt;span class="n"&gt;cases&lt;/span&gt; &lt;span class="n"&gt;aren&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;t special enough …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h1&gt;Zen of Python&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;this&lt;/span&gt;
+&lt;span class="n"&gt;The&lt;/span&gt; &lt;span class="n"&gt;Zen&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;Python&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;by&lt;/span&gt; &lt;span class="n"&gt;Tim&lt;/span&gt; &lt;span class="n"&gt;Peters&lt;/span&gt;
+
+&lt;span class="n"&gt;Beautiful&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;better&lt;/span&gt; &lt;span class="n"&gt;than&lt;/span&gt; &lt;span class="n"&gt;ugly&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;Explicit&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;better&lt;/span&gt; &lt;span class="n"&gt;than&lt;/span&gt; &lt;span class="n"&gt;implicit&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;Simple&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;better&lt;/span&gt; &lt;span class="n"&gt;than&lt;/span&gt; &lt;span class="nb"&gt;complex&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;Complex&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;better&lt;/span&gt; &lt;span class="n"&gt;than&lt;/span&gt; &lt;span class="n"&gt;complicated&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;Flat&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;better&lt;/span&gt; &lt;span class="n"&gt;than&lt;/span&gt; &lt;span class="n"&gt;nested&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;Sparse&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;better&lt;/span&gt; &lt;span class="n"&gt;than&lt;/span&gt; &lt;span class="n"&gt;dense&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;Readability&lt;/span&gt; &lt;span class="n"&gt;counts&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;Special&lt;/span&gt; &lt;span class="n"&gt;cases&lt;/span&gt; &lt;span class="n"&gt;aren&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;t special enough to break the rules.&lt;/span&gt;
+&lt;span class="n"&gt;Although&lt;/span&gt; &lt;span class="n"&gt;practicality&lt;/span&gt; &lt;span class="n"&gt;beats&lt;/span&gt; &lt;span class="n"&gt;purity&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;Errors&lt;/span&gt; &lt;span class="n"&gt;should&lt;/span&gt; &lt;span class="n"&gt;never&lt;/span&gt; &lt;span class="k"&gt;pass&lt;/span&gt; &lt;span class="n"&gt;silently&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;Unless&lt;/span&gt; &lt;span class="n"&gt;explicitly&lt;/span&gt; &lt;span class="n"&gt;silenced&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;face&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;ambiguity&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;refuse&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;temptation&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;guess&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;There&lt;/span&gt; &lt;span class="n"&gt;should&lt;/span&gt; &lt;span class="n"&gt;be&lt;/span&gt; &lt;span class="n"&gt;one&lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="n"&gt;preferably&lt;/span&gt; &lt;span class="n"&gt;only&lt;/span&gt; &lt;span class="n"&gt;one&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;obvious&lt;/span&gt; &lt;span class="n"&gt;way&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;do&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;Although&lt;/span&gt; &lt;span class="n"&gt;that&lt;/span&gt; &lt;span class="n"&gt;way&lt;/span&gt; &lt;span class="n"&gt;may&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;be&lt;/span&gt; &lt;span class="n"&gt;obvious&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;first&lt;/span&gt; &lt;span class="n"&gt;unless&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;re Dutch.&lt;/span&gt;
+&lt;span class="n"&gt;Now&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;better&lt;/span&gt; &lt;span class="n"&gt;than&lt;/span&gt; &lt;span class="n"&gt;never&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;Although&lt;/span&gt; &lt;span class="n"&gt;never&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;often&lt;/span&gt; &lt;span class="n"&gt;better&lt;/span&gt; &lt;span class="n"&gt;than&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;right&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;now&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;If&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;implementation&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;hard&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;explain&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;s a bad idea.&lt;/span&gt;
+&lt;span class="n"&gt;If&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;implementation&lt;/span&gt; &lt;span class="ow"&gt;is&lt;/span&gt; &lt;span class="n"&gt;easy&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;explain&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt; &lt;span class="n"&gt;may&lt;/span&gt; &lt;span class="n"&gt;be&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;good&lt;/span&gt; &lt;span class="n"&gt;idea&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;Namespaces&lt;/span&gt; &lt;span class="n"&gt;are&lt;/span&gt; &lt;span class="n"&gt;one&lt;/span&gt; &lt;span class="n"&gt;honking&lt;/span&gt; &lt;span class="n"&gt;great&lt;/span&gt; &lt;span class="n"&gt;idea&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt; &lt;span class="n"&gt;let&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;s do more of those!&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Python"></category></entry></feed>

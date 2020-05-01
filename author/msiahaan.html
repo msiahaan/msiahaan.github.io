@@ -20,15 +20,15 @@
                 <article>
                     <h1 class="entry-title"><a href="/membuat-blog-di-github.html">Membuat Blog di GitHub</a></h1>
 <footer class="post-info">
-        <abbr class="published" title="2020-04-30T19:57:00+08:00">
-                Published: Thu 30 April 2020
+        <abbr class="published" title="2020-05-10T19:57:00+08:00">
+                Published: Sun 10 May 2020
         </abbr>
 
         <address class="vcard author">
                 By                         <a class="url fn" href="/author/msiahaan.html">msiahaan</a>
         </address>
 <p>In <a href="/category/python.html">Python</a>.</p>
-
+<p>tags: <a href="/tag/python.html">python</a> <a href="/tag/github.html">github</a> </p>
 </footer><!-- /.post-info --><h1>Membuat Blog dengan Pelican di Github</h1>
 <p><a href="http://github.com">GitHub</a> adalah penyedia layanan bagi pemrogram untuk berkolaborasi dalam pengembangan aplikasi. Tim pemrogram dapat meletakkan kode sumber di Github dalam sebuah <em>repository</em> dan pemrogram lain dapat berkolaborasi melalui <em>clone</em> dari <em>repository</em> tersebut.</p>
 <p>Selain itu <a href="http://github.com">GitHub</a> juga menyediakan layanan untuk membuat <em>website</em> dari repository yang ada: <a href="http://pages.github.com">GitHub Pages</a>. Dalam tulisan ini saya menuliskan bagaimana saya membuat blog menggunakan <a href="http://getpelican.com">Pelican</a> (aplikasi membuat halaman web statis) yang kemudian dipublikasikan sebagai halaman web di <a href="http://github.com">GitHub</a>. Tulisan ini merujuk kepada <a href="https://opensource.com/article/19/5/run-your-blog-github-pages-python">Run your blog on GitHub Pages with Python</a></p>
@@ -116,8 +116,92 @@ content  Makefile  output  pelicanconf.py  publishconf.py  tasks.py
 <div class="highlight"><pre><span></span><code>$ git add .
 $ git commit -m <span class="s1">&#39;initial pelican commit to content&#39;</span>
 $ git push origin content
-</code></pre></div>                </article>
+</code></pre></div>
+
+
+<h2>Membuat Post Pertama</h2>
+<p>Setelah melalui persiapan panjang, maka saatnya untuk membuat <em>post</em> pertama menggunakan <em>text editor</em> favorit: <a href="https://www.sublimetext.com/">SublimeText</a>. Anda bebas menggunakan <em>editor</em> yang Anda suka. Post saya tulis dalam format Markdown (Cek ulang: paket Markdown sudah terinstall atau belum).</p>
+<p><img alt="First Post" src="/images/first-post.png"></p>
+<p>Simpan!</p>
+<h2>Publish!</h2>
+<p>Tentu saja selanjutnya adalah memublikasikan <em>post</em> perdana saya di <a href="http://pages.github.com">GitHub Pages</a>. Begini caranya:</p>
+<ul>
+<li>Jalankan Pelican untuk membuat halaman web statis di direktori <strong>content</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code>$  pelican content -o output -s publishconf
+</code></pre></div>
+
+
+<ul>
+<li>Gunakan <strong>ghp-import</strong> untuk memuat isi direktori <strong>output</strong> ke cabang <strong>master</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="err">$</span>  <span class="n">ghp</span><span class="o">-</span><span class="kn">import</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;Pelican site ku&quot;</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">jekyll</span> <span class="o">-</span><span class="n">b</span> <span class="n">master</span> <span class="n">output</span>
+</code></pre></div>
+
+
+<ul>
+<li><em>Push</em> cabang <strong>master</strong> lokal ke repo di GitHub</li>
+</ul>
+<div class="highlight"><pre><span></span><code>$  git push origin master
+</code></pre></div>
+
+
+<ul>
+<li><em>Commit</em> dan <em>push</em> ke cabang <strong>content</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code>$  git add content
+$  git commit -m <span class="s2">&quot;buat post pertama: Zen of Python&quot;</span>
+$  git push origin
+</code></pre></div>
+
+
+<h2>Enjoy Aja!</h2>
+<p>Nah, sekaran waktunya menikmati Blog baru. Buka browser </p>
+<div class="highlight"><pre><span></span><code><span class="c">https://username.github.io</span>
+</code></pre></div>
+
+
+<p>Untuk membuat post baru, ulangi langkah-langkah pembuatan <em>post</em> serta <em>publis</em> di atas. Selamat blogging.</p>                </article>
             </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/zen-of-python.html" rel="bookmark"
+                           title="Permalink to Zen of Python">Zen of Python</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2020-04-30T19:57:00+08:00">
+                Published: Thu 30 April 2020
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/msiahaan.html">msiahaan</a>
+        </address>
+<p>In <a href="/category/python.html">Python</a>.</p>
+
+</footer><!-- /.post-info -->                <h1>Zen of Python</h1>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">this</span>
+<span class="n">The</span> <span class="n">Zen</span> <span class="n">of</span> <span class="n">Python</span><span class="p">,</span> <span class="n">by</span> <span class="n">Tim</span> <span class="n">Peters</span>
+
+<span class="n">Beautiful</span> <span class="ow">is</span> <span class="n">better</span> <span class="n">than</span> <span class="n">ugly</span><span class="o">.</span>
+<span class="n">Explicit</span> <span class="ow">is</span> <span class="n">better</span> <span class="n">than</span> <span class="n">implicit</span><span class="o">.</span>
+<span class="n">Simple</span> <span class="ow">is</span> <span class="n">better</span> <span class="n">than</span> <span class="nb">complex</span><span class="o">.</span>
+<span class="n">Complex</span> <span class="ow">is</span> <span class="n">better</span> <span class="n">than</span> <span class="n">complicated</span><span class="o">.</span>
+<span class="n">Flat</span> <span class="ow">is</span> <span class="n">better</span> <span class="n">than</span> <span class="n">nested</span><span class="o">.</span>
+<span class="n">Sparse</span> <span class="ow">is</span> <span class="n">better</span> <span class="n">than</span> <span class="n">dense</span><span class="o">.</span>
+<span class="n">Readability</span> <span class="n">counts</span><span class="o">.</span>
+<span class="n">Special</span> <span class="n">cases</span> <span class="n">aren</span><span class="s1">&#39;t special enough …</span></code></pre></div>
+                <a class="readmore" href="/zen-of-python.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+                </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="blogroll">
                         <h2>links</h2>
