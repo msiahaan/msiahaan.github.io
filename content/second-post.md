@@ -127,7 +127,7 @@ Tentu saja selanjutnya adalah memublikasikan *post* perdana saya di [GitHub Page
 
 * Jalankan Pelican untuk membuat halaman web statis di direktori **content**
 ```
-$  pelican content -o output -s publishconf
+$  pelican content -o output -s publishconf.py
 ```
 
 * Gunakan **ghp-import** untuk memuat isi direktori **output** ke cabang **master**
@@ -153,7 +153,7 @@ Nah, sekaran waktunya menikmati Blog baru. Buka browser
 ```
 https://username.github.io
 ```
-[My First Post View][first_post_view]
+![My First Post View][first_post_view]
 
 Untuk menyunting atau membuat *post*, ulangi langkah-langkah pembuatan *post* serta *publish* di atas. Selamat blogging.
 
