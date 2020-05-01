@@ -20,7 +20,8 @@ $  python -m venv websites
 
 ## Instalasi Pelican, Markdown dan ghp-import
 
-Kedua, setelah *install* paket yang diperlukan:
+Kedua, *install* paket yang diperlukan:
+
 1.  [Pelican](http://getpelican.com)
 2.  [Markdown](https://pypi.org/project/Markdown/)
 3.  [ghp-import](https://pypi.org/project/ghp-import/)
@@ -47,17 +48,17 @@ $  git clone https://github.com/username/username.github.io blog
 $  cd blog
 ```
 
-Selanjutnya, ini tips ampuh yang dari penulis [Run your blog on GitHub Pages with Python](https://opensource.com/article/19/5/run-your-blog-github-pages-python): buat cabang terpisah untuk "bahan dasar" dan "barang jadi". "Bahan dasar" adalah berkas-berkas dalam format Markdown, berkas-berkas konfigurasi dari Pelican. "Barang jadi" adalah berkas-berkas halaman web (```*.html```).
+Selanjutnya, ini tips ampuh yang dari penulis [Run your blog on GitHub Pages with Python](https://opensource.com/article/19/5/run-your-blog-github-pages-python): buat cabang terpisah untuk *bahan dasar* dan *barang jadi*. *Bahan dasar* adalah berkas-berkas dalam format **Markdown**, berkas-berkas konfigurasi dari Pelican. *Barang jadi* adalah berkas-berkas untuk situs web (```*.html```, images).
 
 ```
 $  git checkout -b content
 Switch to a new branch 'content'
 ```
-**content** adalah cabang tempat kerja dalam mengedit "barang mentah" sementara "barang jadi"/halaman-halaman web akan ditempatkan di cabang **master**.
+**content** adalah cabang tempat kerja dalam mengedit *barang mentah* sementara *barang jadi* halaman-halaman web akan ditempatkan di cabang **master**.
 
-## Menjalankan Pelican
+## Mengkonfigurasi Pelican
 
-Sampailah ke tahap lima: mengkonfigurasi isi dari halam web. Pelican menyediakan skrip untuk mengotomasi proses konfigurasi: ```pelican-quickstart```
+Sampailah ke tahap lima: membuat berkas konfigurasi situs web. Pelican menyediakan skrip untuk mengotomasi proses konfigurasi: ```pelican-quickstart```
 
 ```
 $ pelican-quickstart
@@ -91,7 +92,7 @@ Done. Your new project is available /home/users/websites/blog
 Beberapa hal yang perlu **dijawab**:
 
 1.  Judul/title dari website
-2. Penulis/author dari website
+2.  Penulis/author dari website
 3.  Zona waktu, saya mengunakan Asia/Kuala_Lumpur
 4.  Upload ke GitHub Pages, "y"
 
