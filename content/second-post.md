@@ -118,9 +118,17 @@ $ git push origin content
 
 Setelah melalui persiapan panjang, maka saatnya untuk membuat *post* pertama menggunakan *text editor* favorit: [SublimeText](https://www.sublimetext.com/). Anda bebas menggunakan *editor* yang Anda suka. Post saya tulis dalam format Markdown (Cek ulang: paket Markdown sudah terinstall atau belum).
 
+```
+$  cd content
+$  mkdir pages images
+$  subl first-post.md
+```
+
+Direktori **pages** untuk menyimpan halaman web statis yang jarang diedit, contohnya di halaman *About Us* atau *Contact Us*. Direktori **images** untuk menyimpan berkas-berkas *image* yang digunakan dalam *post* atau *page*.
+
 ![First Post][first_post]
 
-Simpan!
+Simpan.
 
 ## Publish!
 
