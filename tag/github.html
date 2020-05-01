@@ -39,10 +39,12 @@
 
 
 <h2>Instalasi Pelican, Markdown dan ghp-import</h2>
-<p>Kedua, setelah <em>install</em> paket yang diperlukan:
-1.  <a href="http://getpelican.com">Pelican</a>
-2.  <a href="https://pypi.org/project/Markdown/">Markdown</a>
-3.  <a href="https://pypi.org/project/ghp-import/">ghp-import</a></p>
+<p>Kedua, <em>install</em> paket yang diperlukan:</p>
+<ol>
+<li><a href="http://getpelican.com">Pelican</a></li>
+<li><a href="https://pypi.org/project/Markdown/">Markdown</a></li>
+<li><a href="https://pypi.org/project/ghp-import/">ghp-import</a></li>
+</ol>
 <p>Caranya, pakai <code>pip</code> dong!</p>
 <div class="highlight"><pre><span></span><code>$  <span class="nb">cd</span> websites
 $  <span class="nb">source</span> bin/activate
@@ -60,15 +62,15 @@ $  <span class="nb">cd</span> blog
 </code></pre></div>
 
 
-<p>Selanjutnya, ini tips ampuh yang dari penulis <a href="https://opensource.com/article/19/5/run-your-blog-github-pages-python">Run your blog on GitHub Pages with Python</a>: buat cabang terpisah untuk "bahan dasar" dan "barang jadi". "Bahan dasar" adalah berkas-berkas dalam format Markdown, berkas-berkas konfigurasi dari Pelican. "Barang jadi" adalah berkas-berkas halaman web (<code>*.html</code>).</p>
+<p>Selanjutnya, ini tips ampuh yang dari penulis <a href="https://opensource.com/article/19/5/run-your-blog-github-pages-python">Run your blog on GitHub Pages with Python</a>: buat cabang terpisah untuk <em>bahan dasar</em> dan <em>barang jadi</em>. <em>Bahan dasar</em> adalah berkas-berkas dalam format <strong>Markdown</strong>, berkas-berkas konfigurasi dari Pelican. <em>Barang jadi</em> adalah berkas-berkas untuk situs web (<code>*.html</code>, images).</p>
 <div class="highlight"><pre><span></span><code>$  git checkout -b content
 Switch to a new branch <span class="s1">&#39;content&#39;</span>
 </code></pre></div>
 
 
-<p><strong>content</strong> adalah cabang tempat kerja dalam mengedit "barang mentah" sementara "barang jadi"/halaman-halaman web akan ditempatkan di cabang <strong>master</strong>.</p>
-<h2>Menjalankan Pelican</h2>
-<p>Sampailah ke tahap lima: mengkonfigurasi isi dari halam web. Pelican menyediakan skrip untuk mengotomasi proses konfigurasi: <code>pelican-quickstart</code></p>
+<p><strong>content</strong> adalah cabang tempat kerja dalam mengedit <em>barang mentah</em> sementara <em>barang jadi</em> halaman-halaman web akan ditempatkan di cabang <strong>master</strong>.</p>
+<h2>Mengkonfigurasi Pelican</h2>
+<p>Sampailah ke tahap lima: membuat berkas konfigurasi situs web. Pelican menyediakan skrip untuk mengotomasi proses konfigurasi: <code>pelican-quickstart</code></p>
 <div class="highlight"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">pelican</span><span class="o">-</span><span class="n">quickstart</span><span class="w"></span>
 <span class="n">WWelcome</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">pelican</span><span class="o">-</span><span class="n">quickstart</span><span class="w"> </span><span class="n">v4</span><span class="mf">.2.0</span><span class="p">.</span><span class="w"></span>
 

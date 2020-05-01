@@ -11,10 +11,12 @@
 
 
 &lt;h2&gt;Instalasi Pelican, Markdown dan ghp-import&lt;/h2&gt;
-&lt;p&gt;Kedua, setelah &lt;em&gt;install&lt;/em&gt; paket yang diperlukan:
-1.  &lt;a href="http://getpelican.com"&gt;Pelican&lt;/a&gt;
-2.  &lt;a href="https://pypi.org/project/Markdown/"&gt;Markdown&lt;/a&gt;
-3.  &lt;a href="https://pypi.org/project/ghp-import/"&gt;ghp-import&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Kedua, &lt;em&gt;install&lt;/em&gt; paket yang diperlukan:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="http://getpelican.com"&gt;Pelican&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://pypi.org/project/Markdown/"&gt;Markdown&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://pypi.org/project/ghp-import/"&gt;ghp-import&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
 &lt;p&gt;Caranya, pakai &lt;code&gt;pip&lt;/code&gt; dong!&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$  &lt;span class="nb"&gt;cd&lt;/span&gt; websites
 $  &lt;span class="nb"&gt;source&lt;/span&gt; bin/activate
@@ -32,15 +34,15 @@ $  &lt;span class="nb"&gt;cd&lt;/span&gt; blog
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Selanjutnya, ini tips ampuh yang dari penulis &lt;a href="https://opensource.com/article/19/5/run-your-blog-github-pages-python"&gt;Run your blog on GitHub Pages with Python&lt;/a&gt;: buat cabang terpisah untuk "bahan dasar" dan "barang jadi". "Bahan dasar" adalah berkas-berkas dalam format Markdown, berkas-berkas konfigurasi dari Pelican. "Barang jadi" adalah berkas-berkas halaman web (&lt;code&gt;*.html&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;Selanjutnya, ini tips ampuh yang dari penulis &lt;a href="https://opensource.com/article/19/5/run-your-blog-github-pages-python"&gt;Run your blog on GitHub Pages with Python&lt;/a&gt;: buat cabang terpisah untuk &lt;em&gt;bahan dasar&lt;/em&gt; dan &lt;em&gt;barang jadi&lt;/em&gt;. &lt;em&gt;Bahan dasar&lt;/em&gt; adalah berkas-berkas dalam format &lt;strong&gt;Markdown&lt;/strong&gt;, berkas-berkas konfigurasi dari Pelican. &lt;em&gt;Barang jadi&lt;/em&gt; adalah berkas-berkas untuk situs web (&lt;code&gt;*.html&lt;/code&gt;, images).&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$  git checkout -b content
 Switch to a new branch &lt;span class="s1"&gt;&amp;#39;content&amp;#39;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;strong&gt;content&lt;/strong&gt; adalah cabang tempat kerja dalam mengedit "barang mentah" sementara "barang jadi"/halaman-halaman web akan ditempatkan di cabang &lt;strong&gt;master&lt;/strong&gt;.&lt;/p&gt;
-&lt;h2&gt;Menjalankan Pelican&lt;/h2&gt;
-&lt;p&gt;Sampailah ke tahap lima: mengkonfigurasi isi dari halam web. Pelican menyediakan skrip untuk mengotomasi proses konfigurasi: &lt;code&gt;pelican-quickstart&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;content&lt;/strong&gt; adalah cabang tempat kerja dalam mengedit &lt;em&gt;barang mentah&lt;/em&gt; sementara &lt;em&gt;barang jadi&lt;/em&gt; halaman-halaman web akan ditempatkan di cabang &lt;strong&gt;master&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2&gt;Mengkonfigurasi Pelican&lt;/h2&gt;
+&lt;p&gt;Sampailah ke tahap lima: membuat berkas konfigurasi situs web. Pelican menyediakan skrip untuk mengotomasi proses konfigurasi: &lt;code&gt;pelican-quickstart&lt;/code&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;pelican&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;quickstart&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;span class="n"&gt;WWelcome&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;pelican&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;quickstart&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;v4&lt;/span&gt;&lt;span class="mf"&gt;.2.0&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 
