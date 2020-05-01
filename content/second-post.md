@@ -1,5 +1,5 @@
 title: Membuat Blog di GitHub
-date: 2020-05-10 19:57
+date: 2020-05-01 19:57
 category: Python
 tags: python, github
 author: msiahaan
@@ -153,9 +153,12 @@ Nah, sekaran waktunya menikmati Blog baru. Buka browser
 ```
 https://username.github.io
 ```
+[My First Post View][first_post_view]
 
-Untuk membuat post baru, ulangi langkah-langkah pembuatan *post* serta *publis* di atas. Selamat blogging.
+Untuk menyunting atau membuat *post*, ulangi langkah-langkah pembuatan *post* serta *publish* di atas. Selamat blogging.
 
 
 [create_repository]: {static}/images/github-pages-create.png
 [first_post]: {static}/images/first-post.png
+[first_post_view]: {static}/images/first-post-view.png
+
