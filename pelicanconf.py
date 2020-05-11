@@ -35,4 +35,4 @@ DEFAULT_PAGINATION = 10
 #RELATIVE_URLS = True
 
 #Use other theme
-THEME = '~/staticwebsite/websites/pelican-themes/blueidea'
+THEME = 'home/micosiahaan/staticwebsite/websites/pelican-themes/blueidea'
