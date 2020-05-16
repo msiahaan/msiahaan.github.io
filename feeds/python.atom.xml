@@ -1,5 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Bangmico Python Blog - Python</title><link href="/" rel="alternate"></link><link href="/feeds/python.atom.xml" rel="self"></link><id>/</id><updated>2020-05-01T19:57:00+08:00</updated><entry><title>Membuat Blog di GitHub</title><link href="/membuat-blog-di-github.html" rel="alternate"></link><published>2020-05-01T19:57:00+08:00</published><updated>2020-05-01T19:57:00+08:00</updated><author><name>msiahaan</name></author><id>tag:None,2020-05-01:/membuat-blog-di-github.html</id><summary type="html">&lt;h1&gt;Membuat Blog dengan Pelican di Github&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Bangmico Python Blog - Python</title><link href="/" rel="alternate"></link><link href="/feeds/python.atom.xml" rel="self"></link><id>/</id><updated>2020-05-16T10:09:00+08:00</updated><entry><title>Sharing Python di PPKBI</title><link href="/sharing-python-di-ppkbi.html" rel="alternate"></link><published>2020-05-16T10:09:00+08:00</published><updated>2020-05-16T10:09:00+08:00</updated><author><name>msiahaan</name></author><id>tag:None,2020-05-16:/sharing-python-di-ppkbi.html</id><summary type="html">&lt;p&gt;Kemarin, saya memberikan sesi pengenalan pemrograman Python kepada rekan-rekan Persekutuan Kaum Bapak GKBI Kuala Lumpur. &lt;em&gt;Demo Coding&lt;/em&gt; dilakukan menggunakan &lt;em&gt;Jupyter Notebook&lt;/em&gt;&lt;/p&gt;
+&lt;h1&gt;Mem-print output&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Hello, world&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;Hello, world&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;Menanyakan Input&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;nama&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;input&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Siapa nama Anda? &amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Nama Anda &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;nama&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;Siapa nama Anda? Mico Siahaan&lt;/span&gt;
+&lt;span class="err"&gt;Nama Anda Mico Siahaan&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;Variabel …&lt;/h1&gt;</summary><content type="html">&lt;p&gt;Kemarin, saya memberikan sesi pengenalan pemrograman Python kepada rekan-rekan Persekutuan Kaum Bapak GKBI Kuala Lumpur. &lt;em&gt;Demo Coding&lt;/em&gt; dilakukan menggunakan &lt;em&gt;Jupyter Notebook&lt;/em&gt;&lt;/p&gt;
+&lt;h1&gt;Mem-print output&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Hello, world&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;Hello, world&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;Menanyakan Input&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;nama&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;input&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Siapa nama Anda? &amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Nama Anda &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;nama&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;Siapa nama Anda? Mico Siahaan&lt;/span&gt;
+&lt;span class="err"&gt;Nama Anda Mico Siahaan&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;Variabel&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;nama&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Mico Siahaan&amp;#39;&lt;/span&gt; &lt;span class="c1"&gt;# string&lt;/span&gt;
+&lt;span class="n"&gt;jumlah_anak&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;    &lt;span class="c1"&gt;# bilangan bulat&lt;/span&gt;
+&lt;span class="n"&gt;bunga_bank&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;0.05&lt;/span&gt;  &lt;span class="c1"&gt;# bilangan float&lt;/span&gt;
+&lt;span class="n"&gt;nama_anak&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Mathias Siahaan&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Malakhias Siahaan&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="c1"&gt;# list&lt;/span&gt;
+&lt;span class="n"&gt;array&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# tuple&lt;/span&gt;
+&lt;span class="n"&gt;daftar_kata&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;tabo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;enak&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;mangan&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;makan&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;biang&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;anjing&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="c1"&gt;# dictionary&lt;/span&gt;
+
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nama&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;jumlah_anak&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;bunga_bank&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nama_anak&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;array&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;daftar_kata&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;Mico Siahaan&lt;/span&gt;
+&lt;span class="err"&gt;2&lt;/span&gt;
+&lt;span class="err"&gt;0.05&lt;/span&gt;
+&lt;span class="err"&gt;[&amp;#39;Mathias Siahaan&amp;#39;, &amp;#39;Malakhias Siahaan&amp;#39;]&lt;/span&gt;
+&lt;span class="err"&gt;(1, 5, 6, 8, 10)&lt;/span&gt;
+&lt;span class="err"&gt;{&amp;#39;tabo&amp;#39;: &amp;#39;enak&amp;#39;, &amp;#39;mangan&amp;#39;: &amp;#39;makan&amp;#39;, &amp;#39;biang&amp;#39;: &amp;#39;anjing&amp;#39;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;Angka/Numbers&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;harga&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1000&lt;/span&gt;
+&lt;span class="n"&gt;diskon&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;0.1&lt;/span&gt; &lt;span class="c1"&gt;#diskon 10%&lt;/span&gt;
+&lt;span class="n"&gt;dibayar&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;harga&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;diskon&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# dibayar = harga - (1-diskon)&lt;/span&gt;
+
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Jumlah yang perlu dibayar &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;dibayar&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;Jumlah yang perlu dibayar 900.0&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;pokok&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1000&lt;/span&gt;
+&lt;span class="n"&gt;bunga_pertahun&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;0.04&lt;/span&gt;
+&lt;span class="n"&gt;dibayar&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pokok&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;bunga_pertahun&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;
+
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Jumlah dibayar setelah 3 tahun &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;dibayar&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;Jumlah dibayar setelah 3 tahun 1124.864&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;16.666666666666668&lt;/span&gt;
+&lt;span class="err"&gt;4&lt;/span&gt;
+&lt;span class="err"&gt;106&lt;/span&gt;
+&lt;span class="err"&gt;94&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;Strings&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Python"></category></entry><entry><title>Membuat Blog di GitHub</title><link href="/membuat-blog-di-github.html" rel="alternate"></link><published>2020-05-01T19:57:00+08:00</published><updated>2020-05-01T19:57:00+08:00</updated><author><name>msiahaan</name></author><id>tag:None,2020-05-01:/membuat-blog-di-github.html</id><summary type="html">&lt;h1&gt;Membuat Blog dengan Pelican di Github&lt;/h1&gt;
 &lt;p&gt;&lt;a href="http://github.com"&gt;GitHub&lt;/a&gt; adalah penyedia layanan bagi pemrogram untuk berkolaborasi dalam pengembangan aplikasi. Tim pemrogram dapat meletakkan kode sumber di Github dalam sebuah &lt;em&gt;repository&lt;/em&gt; dan pemrogram lain dapat berkolaborasi melalui &lt;em&gt;clone&lt;/em&gt; dari &lt;em&gt;repository&lt;/em&gt; tersebut.&lt;/p&gt;
 &lt;p&gt;Selain itu &lt;a href="http://github.com"&gt;GitHub&lt;/a&gt; juga menyediakan layanan untuk membuat &lt;em&gt;website&lt;/em&gt; dari repository yang …&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Membuat Blog dengan Pelican di Github&lt;/h1&gt;
 &lt;p&gt;&lt;a href="http://github.com"&gt;GitHub&lt;/a&gt; adalah penyedia layanan bagi pemrogram untuk berkolaborasi dalam pengembangan aplikasi. Tim pemrogram dapat meletakkan kode sumber di Github dalam sebuah &lt;em&gt;repository&lt;/em&gt; dan pemrogram lain dapat berkolaborasi melalui &lt;em&gt;clone&lt;/em&gt; dari &lt;em&gt;repository&lt;/em&gt; tersebut.&lt;/p&gt;
