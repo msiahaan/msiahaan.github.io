@@ -24,28 +24,28 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/sharing-python-di-ppkbi.html">Sharing Python di PPKBI</a></h1>
+                    <h1 class="entry-title"><a href="/sesi-sharing-ppkbi-pemrograman-python.html">Sesi Sharing PPKBI - Pemrograman Python</a></h1>
 <footer class="post-info">
         <span>Sat 16 May 2020</span>
 
-</footer><!-- /.post-info --><p>Kemarin, saya memberikan sesi pengenalan pemrograman Python kepada rekan-rekan Persekutuan Kaum Bapak GKBI Kuala Lumpur. <em>Demo Coding</em> dilakukan menggunakan <em>Jupyter Notebook</em></p>
+</footer><!-- /.post-info --><p>Tadi malam, saya memmberikan pengenalan pemrograman Python kepada kaum Bapak Gereja Kristen Berbahasa Indonesia (GKBI) Kuala Lumpur. Demo <em>coding</em> menggunakan <em>Jupyter Notebook</em>. Notebook kemudian saya <em>Save As</em> sebagai file <em>markdown</em> sehingga mudah untuk dikonversi menjadi blog.</p>
 <h1>Mem-print output</h1>
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello, world&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Selamat pagi!&#39;</span><span class="p">)</span>
 </code></pre></div>
 
 
-<div class="highlight"><pre><span></span><code><span class="err">Hello, world</span>
+<div class="highlight"><pre><span></span><code><span class="err">Selamat pagi!</span>
 </code></pre></div>
 
 
 <h1>Menanyakan Input</h1>
 <div class="highlight"><pre><span></span><code><span class="n">nama</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Siapa nama Anda? &#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Nama Anda </span><span class="si">{</span><span class="n">nama</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Nama Anda </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">nama</span><span class="p">))</span>
 </code></pre></div>
 
 
-<div class="highlight"><pre><span></span><code><span class="err">Siapa nama Anda? Mico Siahaan</span>
-<span class="err">Nama Anda Mico Siahaan</span>
+<div class="highlight"><pre><span></span><code><span class="err">Siapa nama Anda? Ando Silaen</span>
+<span class="err">Nama Anda Ando Silaen</span>
 </code></pre></div>
 
 
@@ -115,8 +115,612 @@
 
 
 <h1>Strings</h1>
+<div class="highlight"><pre><span></span><code><span class="n">nama</span> <span class="o">=</span> <span class="s1">&#39;Mico &#39;</span>
+<span class="n">marga</span> <span class="o">=</span> <span class="s1">&#39;Siahaan &#39;</span>
+<span class="n">nama_lengkap</span> <span class="o">=</span> <span class="n">nama</span> <span class="o">+</span> <span class="n">marga</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nama_lengkap</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nama</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>
+</code></pre></div>
+
+
+<div class="highlight"><pre><span></span><code><span class="err">Mico Siahaan </span>
+<span class="err">Mico Mico Mico</span>
+</code></pre></div>
+
+
+<h1>List</h1>
+<div class="highlight"><pre><span></span><code><span class="n">list_anak</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Mathias&#39;</span><span class="p">,</span> <span class="s1">&#39;Malakhias&#39;</span><span class="p">]</span>
+<span class="n">list_keponakan</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Jojo&#39;</span><span class="p">,</span> <span class="s1">&#39;Ivana&#39;</span><span class="p">]</span>
+<span class="n">list_anak_anak</span> <span class="o">=</span> <span class="n">list_anak</span> <span class="o">+</span> <span class="n">list_keponakan</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">list_anak_anak</span><span class="p">)</span>
+<span class="n">list_anak_anak</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Jonathan&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">list_anak_anak</span><span class="p">)</span>
+</code></pre></div>
+
+
+<div class="highlight"><pre><span></span><code><span class="k">[&#39;Mathias&#39;, &#39;Malakhias&#39;, &#39;Jojo&#39;, &#39;Ivana&#39;]</span>
+<span class="k">[&#39;Mathias&#39;, &#39;Malakhias&#39;, &#39;Jonathan&#39;, &#39;Ivana&#39;]</span>
+</code></pre></div>
+
+
+<div class="highlight"><pre><span></span><code><span class="n">anak_sulung</span> <span class="o">=</span> <span class="n">list_anak</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">anak_sulung</span><span class="p">)</span>
+<span class="n">anak_kandung</span> <span class="o">=</span> <span class="n">list_anak_anak</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">anak_kandung</span><span class="p">)</span>
+</code></pre></div>
+
+
+<div class="highlight"><pre><span></span><code><span class="err">Mathias</span>
+<span class="err">[&#39;Mathias&#39;, &#39;Malakhias&#39;]</span>
+</code></pre></div>
+
+
+<h1>Tuples</h1>
+<div class="highlight"><pre><span></span><code><span class="n">tuple_anak</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;Mathias&#39;</span><span class="p">,</span> <span class="s1">&#39;Malakhias&#39;</span><span class="p">)</span>
+<span class="n">tuple_keponakan</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;Jojo&#39;</span><span class="p">,</span> <span class="s1">&#39;Ivana&#39;</span><span class="p">)</span>
+<span class="n">tuple_anak_anak</span> <span class="o">=</span> <span class="n">tuple_anak</span> <span class="o">+</span> <span class="n">tuple_keponakan</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tuple_anak_anak</span><span class="p">)</span>
+<span class="n">tuple_anak_anak</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Jonathan&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tuple_anak_anak</span><span class="p">)</span>
+</code></pre></div>
+
+
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="s1">&#39;Mathias&#39;</span><span class="p">,</span> <span class="s1">&#39;Malakhias&#39;</span><span class="p">,</span> <span class="s1">&#39;Jojo&#39;</span><span class="p">,</span> <span class="s1">&#39;Ivana&#39;</span><span class="p">)</span>
+
+
+
+<span class="c1">---------------------------------------------------------------------------</span>
+
+<span class="n">TypeError</span>                                 <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="k">call</span> <span class="k">last</span><span class="p">)</span>
+
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="k">input</span><span class="o">-</span><span class="mi">13</span><span class="o">-</span><span class="n">d216d0a934f0</span><span class="o">&gt;</span> <span class="k">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+      <span class="mi">3</span> <span class="n">tuple_anak_anak</span> <span class="o">=</span> <span class="n">tuple_anak</span> <span class="o">+</span> <span class="n">tuple_keponakan</span>
+      <span class="mi">4</span> <span class="n">print</span><span class="p">(</span><span class="n">tuple_anak_anak</span><span class="p">)</span>
+<span class="c1">----&gt; 5 tuple_anak_anak[2] = &#39;Jonathan&#39;</span>
+      <span class="mi">6</span> <span class="n">print</span><span class="p">(</span><span class="n">tuple_anak_anak</span><span class="p">)</span>
+
+
+<span class="n">TypeError</span><span class="p">:</span> <span class="s1">&#39;tuple&#39;</span> <span class="k">object</span> <span class="n">does</span> <span class="k">not</span> <span class="n">support</span> <span class="n">item</span> <span class="k">assignment</span>
+</code></pre></div>
+
+
+<h1>Dictionary</h1>
+<div class="highlight"><pre><span></span><code><span class="n">dict_batak</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;mangan&#39;</span><span class="p">:</span> <span class="s1">&#39;makan&#39;</span><span class="p">,</span> <span class="s1">&#39;tabo&#39;</span><span class="p">:</span> <span class="s1">&#39;enak&#39;</span><span class="p">,</span> <span class="s1">&#39;jabu&#39;</span><span class="p">:</span> <span class="s1">&#39;rumah&#39;</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dict_batak</span><span class="p">[</span><span class="s1">&#39;jabu&#39;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dict_batak</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dict_batak</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+
+<span class="n">dict_batak</span><span class="p">[</span><span class="s1">&#39;tabo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;lezat&#39;</span>
+<span class="n">dict_batak</span>
+</code></pre></div>
+
+
+<div class="highlight"><pre><span></span><code><span class="n">rumah</span>
+<span class="n">dict_keys</span><span class="p">([</span><span class="s1">&#39;mangan&#39;</span><span class="p">,</span> <span class="s1">&#39;tabo&#39;</span><span class="p">,</span> <span class="s1">&#39;jabu&#39;</span><span class="p">])</span>
+<span class="n">dict_values</span><span class="p">([</span><span class="s1">&#39;makan&#39;</span><span class="p">,</span> <span class="s1">&#39;enak&#39;</span><span class="p">,</span> <span class="s1">&#39;rumah&#39;</span><span class="p">])</span>
+
+
+
+
+
+<span class="err">{</span><span class="s1">&#39;mangan&#39;</span><span class="p">:</span> <span class="s1">&#39;makan&#39;</span><span class="p">,</span> <span class="s1">&#39;tabo&#39;</span><span class="p">:</span> <span class="s1">&#39;lezat&#39;</span><span class="p">,</span> <span class="s1">&#39;jabu&#39;</span><span class="p">:</span> <span class="s1">&#39;rumah&#39;</span><span class="err">}</span>
+</code></pre></div>
+
+
+<h1>Set</h1>
+<div class="highlight"><pre><span></span><code><span class="n">list_buah</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apel&#39;</span><span class="p">,</span> <span class="s1">&#39;jeruk&#39;</span><span class="p">,</span> <span class="s1">&#39;semangka&#39;</span><span class="p">,</span> <span class="s1">&#39;jeruk&#39;</span><span class="p">]</span>
+<span class="n">set_buah</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;apel&#39;</span><span class="p">,</span> <span class="s1">&#39;jeruk&#39;</span><span class="p">,</span> <span class="s1">&#39;semangka&#39;</span><span class="p">,</span> <span class="s1">&#39;jeruk&#39;</span><span class="p">}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">list_buah</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">set_buah</span><span class="p">)</span>
+</code></pre></div>
+
+
+<div class="highlight"><pre><span></span><code><span class="k">[&#39;apel&#39;, &#39;jeruk&#39;, &#39;semangka&#39;, &#39;jeruk&#39;]</span>
+<span class="na">{&#39;jeruk&#39;, &#39;semangka&#39;, &#39;apel&#39;}</span>
+</code></pre></div>
+
+
+<div class="highlight"><pre><span></span><code><span class="n">buah_favorit</span> <span class="o">=</span> <span class="n">set_buah</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">buah_favorit</span><span class="p">)</span>
+</code></pre></div>
+
+
+<div class="highlight"><pre><span></span><code><span class="c1">---------------------------------------------------------------------------</span>
+
+<span class="n">TypeError</span>                                 <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="k">call</span> <span class="k">last</span><span class="p">)</span>
+
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="k">input</span><span class="o">-</span><span class="mi">25</span><span class="o">-</span><span class="mi">3</span><span class="n">bfdf3d116bf</span><span class="o">&gt;</span> <span class="k">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="c1">----&gt; 1 buah_favorit = set_buah[1]</span>
+      <span class="mi">2</span> <span class="n">print</span><span class="p">(</span><span class="n">buah_favorit</span><span class="p">)</span>
+
+
+<span class="n">TypeError</span><span class="p">:</span> <span class="s1">&#39;set&#39;</span> <span class="k">object</span> <span class="n">does</span> <span class="k">not</span> <span class="n">support</span> <span class="n">indexing</span>
+</code></pre></div>
+
+
+<h1>For</h1>
+<div class="highlight"><pre><span></span><code><span class="n">list_angka</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">angka</span> <span class="ow">in</span> <span class="n">list_angka</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">angka</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+</code></pre></div>
+
+
+<div class="highlight"><pre><span></span><code><span class="err">1 2 3 4 5 6</span>
+</code></pre></div>
+
+
+<div class="highlight"><pre><span></span><code><span class="n">tuple_anak_anak</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;Mathias&#39;</span><span class="p">,</span> <span class="s1">&#39;Malakhias&#39;</span><span class="p">,</span> <span class="s1">&#39;Jonathan&#39;</span><span class="p">,</span> <span class="s1">&#39;Ivana&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">anak</span> <span class="ow">in</span> <span class="n">tuple_anak_anak</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Nama anak: </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">anak</span><span class="p">))</span>
+</code></pre></div>
+
+
+<div class="highlight"><pre><span></span><code><span class="err">Nama anak: Mathias</span>
+<span class="err">Nama anak: Malakhias</span>
+<span class="err">Nama anak: Jonathan</span>
+<span class="err">Nama anak: Ivana</span>
+</code></pre></div>
+
+
+<div class="highlight"><pre><span></span><code><span class="n">list_angka</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+
+<span class="n">list_kuadrat</span> <span class="o">=</span> <span class="p">[</span><span class="n">kucing</span> <span class="o">**</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">kucing</span> <span class="ow">in</span> <span class="n">list_angka</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">list_kuadrat</span><span class="p">)</span>
+</code></pre></div>
+
+
+<div class="highlight"><pre><span></span><code><span class="err">[1, 4, 9, 16, 25, 36]</span>
+</code></pre></div>
+
+
+<h1>While</h1>
+<div class="highlight"><pre><span></span><code><span class="n">angka_awal</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">angka_akhir</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">angka</span> <span class="o">=</span> <span class="n">angka_awal</span>
+<span class="k">while</span> <span class="n">angka</span> <span class="o">&lt;=</span> <span class="n">angka_akhir</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Angka: </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">angka</span><span class="p">))</span>
+    <span class="n">angka</span> <span class="o">=</span> <span class="n">angka</span> <span class="o">+</span> <span class="mi">1</span>
+</code></pre></div>
+
+
+<div class="highlight"><pre><span></span><code><span class="n">Angka</span><span class="o">:</span> <span class="mi">0</span>
+<span class="n">Angka</span><span class="o">:</span> <span class="mi">1</span>
+<span class="n">Angka</span><span class="o">:</span> <span class="mi">2</span>
+<span class="n">Angka</span><span class="o">:</span> <span class="mi">3</span>
+<span class="n">Angka</span><span class="o">:</span> <span class="mi">4</span>
+<span class="n">Angka</span><span class="o">:</span> <span class="mi">5</span>
+<span class="n">Angka</span><span class="o">:</span> <span class="mi">6</span>
+<span class="n">Angka</span><span class="o">:</span> <span class="mi">7</span>
+<span class="n">Angka</span><span class="o">:</span> <span class="mi">8</span>
+<span class="n">Angka</span><span class="o">:</span> <span class="mi">9</span>
+<span class="n">Angka</span><span class="o">:</span> <span class="mi">10</span>
+</code></pre></div>
+
+
+<h1>Function</h1>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">print_nama</span><span class="p">(</span><span class="n">nama</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Selamat pagi </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">nama</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sudah makankah?&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">luas_kotak</span><span class="p">(</span><span class="n">sisi</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">sisi</span><span class="o">*</span><span class="mi">4</span><span class="p">)</span>
+
+
+<span class="n">nama</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Nama: &#39;</span><span class="p">)</span>
+<span class="n">print_nama</span><span class="p">(</span><span class="n">nama</span><span class="p">)</span>
+
+<span class="n">sisi</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Sisi: &#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">luas_kotak</span><span class="p">(</span><span class="n">sisi</span><span class="p">))</span>
+</code></pre></div>
+
+
+<div class="highlight"><pre><span></span><code><span class="n">Nama</span><span class="o">:</span> <span class="n">Ando</span> <span class="n">Silaen</span>
+<span class="n">Selamat</span> <span class="n">pagi</span> <span class="n">Ando</span> <span class="n">Silaen</span>
+<span class="n">Sudah</span> <span class="n">makankah</span><span class="o">?</span>
+<span class="n">Sisi</span><span class="o">:</span> <span class="mi">2</span>
+<span class="mi">8</span>
+<span class="n">None</span>
+</code></pre></div>
+
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">pi</span>
+
+<span class="k">def</span> <span class="nf">luas_lingkaran</span><span class="p">(</span><span class="n">radius</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fungsi untuk menghitung luas lingkaran</span>
+
+<span class="sd">    Parameter:</span>
+<span class="sd">    ----------</span>
+<span class="sd">    radius    : radius/jari-jari dari lingkaran</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">pi</span> <span class="o">*</span> <span class="n">radius</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">radius</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Radius lingkaran (cm): &#39;</span><span class="p">)</span>
+<span class="n">luas</span> <span class="o">=</span> <span class="n">luas_lingkaran</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">radius</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Luas lingkaran (cm2): </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">luas</span><span class="p">))</span>
+</code></pre></div>
+
+
+<div class="highlight"><pre><span></span><code><span class="err">Radius lingkaran (cm): 5</span>
+<span class="err">Luas lingkaran (cm2): 78.53981633974483</span>
+</code></pre></div>
+
+
+<div class="highlight"><pre><span></span><code><span class="n">help</span><span class="p">(</span><span class="n">luas_lingkaran</span><span class="p">)</span>
+<span class="c1">#help(print)</span>
+<span class="c1">#help(string)</span>
+
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
+</code></pre></div>
+
+
+<div class="highlight"><pre><span></span><code><span class="n">Help</span> <span class="k">on</span> <span class="k">function</span> <span class="n">luas_lingkaran</span> <span class="k">in</span> <span class="n">module</span> <span class="n">__main__</span><span class="p">:</span>
+
+<span class="n">luas_lingkaran</span><span class="p">(</span><span class="n">radius</span><span class="p">)</span>
+    <span class="n">Fungsi</span> <span class="n">untuk</span> <span class="n">menghitung</span> <span class="n">luas</span> <span class="n">lingkaran</span>
+
+    <span class="k">Parameter</span><span class="p">:</span>
+    <span class="c1">----------</span>
+    <span class="n">radius</span>    <span class="p">:</span> <span class="n">radius</span><span class="o">/</span><span class="n">jari</span><span class="o">-</span><span class="n">jari</span> <span class="n">dari</span> <span class="n">lingkaran</span>
+
+<span class="mi">2432902008176640000</span>
+</code></pre></div>
+
+
+<h1>Class</h1>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Anak</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class untuk definisi Anak</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">    -----------</span>
+<span class="sd">    nama     : nama anak</span>
+
+<span class="sd">    Methods:</span>
+<span class="sd">    ------</span>
+<span class="sd">    print_nama    : return nama anak</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nama</span><span class="p">,</span> <span class="n">nama_belakang</span><span class="p">):</span>
+        <span class="c1">#inisiasi nama</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_nama</span> <span class="o">=</span> <span class="n">nama</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_belakang</span> <span class="o">=</span> <span class="n">nama_belakang</span>
+
+    <span class="k">def</span> <span class="nf">print_nama</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Method: nama </span>
+        <span class="c1"># return nama</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nama</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_belakang</span>
+
+<span class="n">mathias</span> <span class="o">=</span> <span class="n">Anak</span><span class="p">(</span><span class="s1">&#39;Mathias&#39;</span><span class="p">,</span> <span class="s1">&#39;Siahaan&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mathias</span><span class="o">.</span><span class="n">print_nama</span><span class="p">())</span>
+
+<span class="n">help</span><span class="p">(</span><span class="n">Anak</span><span class="p">)</span>
+</code></pre></div>
+
+
+<div class="highlight"><pre><span></span><code><span class="n">Mathias</span> <span class="n">Siahaan</span>
+<span class="n">Help</span> <span class="k">on</span> <span class="k">class</span> <span class="n">Anak</span> <span class="k">in</span> <span class="n">module</span> <span class="n">__main__</span><span class="p">:</span>
+
+<span class="k">class</span> <span class="n">Anak</span><span class="p">(</span><span class="n">builtins</span><span class="p">.</span><span class="k">object</span><span class="p">)</span>
+ <span class="o">|</span>  <span class="n">Anak</span><span class="p">(</span><span class="n">nama</span><span class="p">,</span> <span class="n">nama_belakang</span><span class="p">)</span>
+ <span class="o">|</span>  
+ <span class="o">|</span>  <span class="k">Class</span> <span class="n">untuk</span> <span class="n">definisi</span> <span class="n">Anak</span>
+ <span class="o">|</span>  
+ <span class="o">|</span>  <span class="n">Attributes</span><span class="p">:</span>
+ <span class="o">|</span>  <span class="c1">-----------</span>
+ <span class="o">|</span>  <span class="n">nama</span>     <span class="p">:</span> <span class="n">nama</span> <span class="n">anak</span>
+ <span class="o">|</span>  
+ <span class="o">|</span>  <span class="n">Methods</span><span class="p">:</span>
+ <span class="o">|</span>  <span class="c1">------</span>
+ <span class="o">|</span>  <span class="n">print_nama</span>    <span class="p">:</span> <span class="k">return</span> <span class="n">nama</span> <span class="n">anak</span>
+ <span class="o">|</span>  
+ <span class="o">|</span>  <span class="n">Methods</span> <span class="k">defined</span> <span class="n">here</span><span class="p">:</span>
+ <span class="o">|</span>  
+ <span class="o">|</span>  <span class="n">__init__</span><span class="p">(</span><span class="k">self</span><span class="p">,</span> <span class="n">nama</span><span class="p">,</span> <span class="n">nama_belakang</span><span class="p">)</span>
+ <span class="o">|</span>      <span class="k">Initialize</span> <span class="k">self</span><span class="p">.</span>  <span class="n">See</span> <span class="n">help</span><span class="p">(</span><span class="k">type</span><span class="p">(</span><span class="k">self</span><span class="p">))</span> <span class="k">for</span> <span class="n">accurate</span> <span class="n">signature</span><span class="p">.</span>
+ <span class="o">|</span>  
+ <span class="o">|</span>  <span class="n">print_nama</span><span class="p">(</span><span class="k">self</span><span class="p">)</span>
+ <span class="o">|</span>  
+ <span class="o">|</span>  <span class="c1">----------------------------------------------------------------------</span>
+ <span class="o">|</span>  <span class="k">Data</span> <span class="n">descriptors</span> <span class="k">defined</span> <span class="n">here</span><span class="p">:</span>
+ <span class="o">|</span>  
+ <span class="o">|</span>  <span class="n">__dict__</span>
+ <span class="o">|</span>      <span class="k">dictionary</span> <span class="k">for</span> <span class="n">instance</span> <span class="n">variables</span> <span class="p">(</span><span class="k">if</span> <span class="k">defined</span><span class="p">)</span>
+ <span class="o">|</span>  
+ <span class="o">|</span>  <span class="n">__weakref__</span>
+ <span class="o">|</span>      <span class="n">list</span> <span class="k">of</span> <span class="n">weak</span> <span class="k">references</span> <span class="k">to</span> <span class="n">the</span> <span class="k">object</span> <span class="p">(</span><span class="k">if</span> <span class="k">defined</span><span class="p">)</span>
+</code></pre></div>
+
+
+<h1>String Methods</h1>
+<div class="highlight"><pre><span></span><code><span class="n">nama</span> <span class="o">=</span> <span class="s1">&#39;mico siahaan&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nama</span><span class="o">.</span><span class="n">capitalize</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nama</span><span class="o">.</span><span class="n">title</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nama</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+
+<span class="n">list_char</span> <span class="o">=</span> <span class="n">nama</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">list_char</span><span class="p">)</span>
+</code></pre></div>
+
+
+<div class="highlight"><pre><span></span><code><span class="err">Mico siahaan</span>
+<span class="err">Mico Siahaan</span>
+<span class="err">MICO SIAHAAN</span>
+<span class="err">[&#39;mico&#39;, &#39;siahaan&#39;]</span>
+</code></pre></div>
+
+
+<p>Nice to read [https://docs.python.org/3/library/stdtypes.html#string-methods]</p>
+<h1>Errors/Exceptions</h1>
+<div class="highlight"><pre><span></span><code><span class="n">list_anak</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Mathias&#39;</span><span class="p">,</span> <span class="s1">&#39;Malakhias&#39;</span><span class="p">]</span>
+<span class="n">list_anak</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Jojo&#39;</span>
+<span class="n">list_anak</span>
+</code></pre></div>
+
+
+<div class="highlight"><pre><span></span><code><span class="err">[&#39;Mathias&#39;, &#39;Jojo&#39;]</span>
+</code></pre></div>
+
+
+<div class="highlight"><pre><span></span><code><span class="n">int_utang</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Utang pokok: &#39;</span><span class="p">))</span>
+<span class="n">float_bunga</span> <span class="o">=</span> <span class="mf">0.03</span>
+<span class="n">float_bayar</span> <span class="o">=</span> <span class="n">int_utang</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">float_bunga</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dibayar: </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">float_bayar</span><span class="p">))</span>
+</code></pre></div>
+
+
+<div class="highlight"><pre><span></span><code><span class="err">Utang pokok: 1000</span>
+<span class="c">Dibayar: 1060.8999999999999</span>
+</code></pre></div>
+
+
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Anak</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nama</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_nama</span> <span class="o">=</span> <span class="n">nama</span>
+    <span class="k">def</span> <span class="nf">nama</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nama</span>
+
+<span class="n">mathias</span> <span class="o">=</span> <span class="n">Anak</span><span class="p">(</span><span class="s1">&#39;Mathias Siahaan&#39;</span><span class="p">)</span>
+<span class="n">mathias</span><span class="o">.</span><span class="n">nama</span><span class="p">()</span>
+</code></pre></div>
+
+
+<div class="highlight"><pre><span></span><code><span class="err">&#39;Mathias Siahaan&#39;</span>
+</code></pre></div>
+
+
+<div class="highlight"><pre><span></span><code><span class="n">list_angka</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">angka</span> <span class="ow">in</span> <span class="n">list_angka</span><span class="p">:</span>
+    <span class="n">plus_one</span> <span class="o">=</span> <span class="n">angka</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">plus_one</span><span class="p">)</span>
+</code></pre></div>
+
+
+<div class="highlight"><pre><span></span><code><span class="err">1</span>
+<span class="err">2</span>
+<span class="err">3</span>
+<span class="err">4</span>
+<span class="err">5</span>
+<span class="err">6</span>
+<span class="err">7</span>
+<span class="err">8</span>
+<span class="err">9</span>
+<span class="err">10</span>
+<span class="err">11</span>
+<span class="err">12</span>
+<span class="err">13</span>
+<span class="err">14</span>
+<span class="err">15</span>
+<span class="err">16</span>
+<span class="err">17</span>
+<span class="err">18</span>
+<span class="err">19</span>
+<span class="err">20</span>
+<span class="err">21</span>
+<span class="err">22</span>
+<span class="err">23</span>
+<span class="err">24</span>
+<span class="err">25</span>
+<span class="err">26</span>
+<span class="err">27</span>
+<span class="err">28</span>
+<span class="err">29</span>
+<span class="err">30</span>
+<span class="err">31</span>
+<span class="err">32</span>
+<span class="err">33</span>
+<span class="err">34</span>
+<span class="err">35</span>
+<span class="err">36</span>
+<span class="err">37</span>
+<span class="err">38</span>
+<span class="err">39</span>
+<span class="err">40</span>
+<span class="err">41</span>
+<span class="err">42</span>
+<span class="err">43</span>
+<span class="err">44</span>
+<span class="err">45</span>
+<span class="err">46</span>
+<span class="err">47</span>
+<span class="err">48</span>
+<span class="err">49</span>
+<span class="err">50</span>
+<span class="err">51</span>
+<span class="err">52</span>
+<span class="err">53</span>
+<span class="err">54</span>
+<span class="err">55</span>
+<span class="err">56</span>
+<span class="err">57</span>
+<span class="err">58</span>
+<span class="err">59</span>
+<span class="err">60</span>
+<span class="err">61</span>
+<span class="err">62</span>
+<span class="err">63</span>
+<span class="err">64</span>
+<span class="err">65</span>
+<span class="err">66</span>
+<span class="err">67</span>
+<span class="err">68</span>
+<span class="err">69</span>
+<span class="err">70</span>
+<span class="err">71</span>
+<span class="err">72</span>
+<span class="err">73</span>
+<span class="err">74</span>
+<span class="err">75</span>
+<span class="err">76</span>
+<span class="err">77</span>
+<span class="err">78</span>
+<span class="err">79</span>
+<span class="err">80</span>
+<span class="err">81</span>
+<span class="err">82</span>
+<span class="err">83</span>
+<span class="err">84</span>
+<span class="err">85</span>
+<span class="err">86</span>
+<span class="err">87</span>
+<span class="err">88</span>
+<span class="err">89</span>
+<span class="err">90</span>
+<span class="err">91</span>
+<span class="err">92</span>
+<span class="err">93</span>
+<span class="err">94</span>
+<span class="err">95</span>
+<span class="err">96</span>
+<span class="err">97</span>
+<span class="err">98</span>
+<span class="err">99</span>
+<span class="err">100</span>
+<span class="err">101</span>
+<span class="err">102</span>
+<span class="err">103</span>
+<span class="err">104</span>
+<span class="err">105</span>
+<span class="err">106</span>
+<span class="err">107</span>
+<span class="err">108</span>
+<span class="err">109</span>
+<span class="err">110</span>
+<span class="err">111</span>
+<span class="err">112</span>
+<span class="err">113</span>
+<span class="err">114</span>
+<span class="err">115</span>
+<span class="err">116</span>
+<span class="err">117</span>
+<span class="err">118</span>
+<span class="err">119</span>
+<span class="err">120</span>
+<span class="err">121</span>
+<span class="err">122</span>
+<span class="err">123</span>
+<span class="err">124</span>
+<span class="err">125</span>
+<span class="err">126</span>
+<span class="err">127</span>
+<span class="err">128</span>
+<span class="err">129</span>
+<span class="err">130</span>
+<span class="err">131</span>
+<span class="err">132</span>
+<span class="err">133</span>
+<span class="err">134</span>
+<span class="err">135</span>
+<span class="err">136</span>
+<span class="err">137</span>
+<span class="err">138</span>
+<span class="err">139</span>
+<span class="err">140</span>
+<span class="err">141</span>
+<span class="err">142</span>
+<span class="err">143</span>
+<span class="err">144</span>
+<span class="err">145</span>
+<span class="err">146</span>
+<span class="err">147</span>
+<span class="err">148</span>
+<span class="err">149</span>
+<span class="err">150</span>
+<span class="err">151</span>
+<span class="err">152</span>
+<span class="err">153</span>
+<span class="err">154</span>
+<span class="err">155</span>
+<span class="err">156</span>
+<span class="err">157</span>
+<span class="err">158</span>
+<span class="err">159</span>
+<span class="err">160</span>
+<span class="err">161</span>
+<span class="err">162</span>
+<span class="err">163</span>
+<span class="err">164</span>
+<span class="err">165</span>
+<span class="err">166</span>
+<span class="err">167</span>
+<span class="err">168</span>
+<span class="err">169</span>
+<span class="err">170</span>
+<span class="err">171</span>
+<span class="err">172</span>
+<span class="err">173</span>
+<span class="err">174</span>
+<span class="err">175</span>
+<span class="err">176</span>
+<span class="err">177</span>
+<span class="err">178</span>
+<span class="err">179</span>
+<span class="err">180</span>
+<span class="err">181</span>
+<span class="err">182</span>
+<span class="err">183</span>
+<span class="err">184</span>
+<span class="err">185</span>
+<span class="err">186</span>
+<span class="err">187</span>
+<span class="err">188</span>
+<span class="err">189</span>
+<span class="err">190</span>
+<span class="err">191</span>
+<span class="err">192</span>
+<span class="err">193</span>
+<span class="err">194</span>
+<span class="err">195</span>
+<span class="err">196</span>
+<span class="err">197</span>
+<span class="err">198</span>
+<span class="err">199</span>
+<span class="err">200</span>
+</code></pre></div>
+
+
+<div class="highlight"><pre><span></span><code><span class="n">angka</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="k">if</span> <span class="n">angka</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Lebih dari 5&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Kurang dari 5&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+
+<div class="highlight"><pre><span></span><code><span class="err">Lebih dari 5</span>
+</code></pre></div>
+
+
 <div class="highlight"><pre><span></span><code>
-</code></pre></div>                </article>
+</code></pre></div>
+
+
+<p>Happy Pythoning!</p>                </article>
             </aside><!-- /#featured -->
                 <section id="content" class="body">
                     <h1>Other articles</h1>
