@@ -12,6 +12,7 @@
                 <h1><a href="/">Bangmico Python Blog </a></h1>
                 <nav><ul>
                     <li><a href="/pages/tentang-saya.html">Tentang Saya</a></li>
+                    <li><a href="/category/misc.html">misc</a></li>
                     <li class="active"><a href="/category/python.html">Python</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
@@ -39,24 +40,24 @@
 <h2>Clone Template Repository</h2>
 <p>Mula-mula saya me-download koleksi template Pelican dari repositori dengan cara melakukan <em>clone</em> repositori <a href="https://github.com/getpelican/pelican-plugins">Pelican Themes GitHub</a>. Template saya letakkan di /home/micosiahaan/staticwebsite/websites</p>
 <p>Saya pindah ke direktori /home/micosiahaan/staticwebsite/websites</p>
-<div class="highlight"><pre><span></span><code>$  git clone https://github.com/getpelican/pelican-plugins.git pelican-themes
-</code></pre></div>
+<div class="highlight"><pre><span></span>$  git clone https://github.com/getpelican/pelican-plugins.git pelican-themes
+</pre></div>
 
 
 <p>Maka di direktori /home/micosiahaan/staticwebsite/websites akan terbentuk direktori pelican-themes. Direktori pelican-themes berisikan direktori-direktori yang berisikan template.</p>
 <p>Kemudian pindah ke direktori yang berisikan projek <em>blog</em>. </p>
 <h2>Membuat Link ke Direktori Template</h2>
 <p>Lanhkah selanjutnya adalah membuat link dari template yang akan saya gunakan. Saya memilih template <em>bootstrap2</em> yang berada dalam direktori pelican-themes/bootstrap2</p>
-<div class="highlight"><pre><span></span><code>$  mkdir -p content/themes
+<div class="highlight"><pre><span></span>$  mkdir -p content/themes
 $  ln -s home/micosiahaan/staticwebsite/websites/pelican-themes/bootstrap2 content/themes/bootstrap2
-</code></pre></div>
+</pre></div>
 
 
 <h2>Edit pelicanconf.py</h2>
 <p>Cari baris yang berisikan variable THEME, dan isikan alamat direktori template</p>
-<div class="highlight"><pre><span></span><code><span class="err">#Use other theme</span>
+<div class="highlight"><pre><span></span><span class="err">#Use other theme</span>
 <span class="err">THEME = &#39;content/themes/bootstrap2&#39;</span>
-</code></pre></div>
+</pre></div>
 
 
 <p>Save, pelicanconf.py dan <em>VOILA!</em> template yang baru siap digunakan</p>
@@ -71,6 +72,7 @@ $  ln -s home/micosiahaan/staticwebsite/websites/pelican-themes/bootstrap2 conte
                             <li><a href="http://getpelican.com/">Pelican</a></li>
                             <li><a href="http://python.org/">Python.org</a></li>
                             <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
                         </ul>
                 </div><!-- /.blogroll -->
                 <div class="social">
