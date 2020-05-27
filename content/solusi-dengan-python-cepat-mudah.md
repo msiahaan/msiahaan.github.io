@@ -12,14 +12,6 @@ Contohnya kemarin akuntan kantor bingung karena dia diminta oleh bank untuk mens
 
 Akhirnya tadi malam berbekalkan modul csv serta PyQt4, saya buatkan antar muka untuk memasukkan data payroll yang kemudian disimpan dalam format csv.
 
-Screenshotnya:
-
-
-![Screeshot Aplikasi][screenshot_app]
-
-[screenshot_app]: http://1.bp.blogspot.com/_n6fub3mZ0JU/TTajLErGu-I/AAAAAAAAAEA/AKkO6CcKdxs/s320/payroll_csv_ui.png
-
-
 
 Potongan source codenya:
 

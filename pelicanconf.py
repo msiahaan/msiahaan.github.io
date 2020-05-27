@@ -35,4 +35,5 @@ DEFAULT_PAGINATION = 10
 #RELATIVE_URLS = True
 
 #Use other theme
-#THEME = '/home/micosiahaan/staticwebsite/websites/pelican-themes/blueidea'
+#THEME = 'content/theme/pelican-bootstrap3'
+#JINJA_ENVIRONMENT = {'extensions': ['jinja2.ext.i18n']}
