@@ -10,14 +10,14 @@ Salah satu kelebihkan python yang sangat saya sukai adalah python memiliki kolek
 
 Contohnya kemarin akuntan kantor bingung karena dia diminta oleh bank untuk mensubmit file csv yang berisikan data-data untuk transfer payroll/gaji karyawan. Bank mengirimkan template berkas csv yang dapat diimpor oleh sistem bank. Maka dia menerima file csv yang berisikan 41 field, sebagian harus diisi dan sebagian opsional. Setiap field dipisahkan oleh koma (,). Dia mengeluh karena format yang harus dia masukkan bagi dia terasa tidak 'user friendly'. Sudah coba impor dan ekspor file csv menggunakan Excel namun tetap kurang 'nyaman'.\
 
-Akhirnya tadi malam berbekalkan modul csv serta PyQt4, saya buatkan antar muka untuk memasukkan data payroll yang kemudian disimpan dalam format csv.\
+Akhirnya tadi malam berbekalkan modul csv serta PyQt4, saya buatkan antar muka untuk memasukkan data payroll yang kemudian disimpan dalam format csv.
 
 Screenshotnya:
 
 
 ![Screeshot Aplikasi][screenshot_app]
 
-[screenshot_app]: (http://1.bp.blogspot.com/_n6fub3mZ0JU/TTajLErGu-I/AAAAAAAAAEA/AKkO6CcKdxs/s320/payroll_csv_ui.png)
+[screenshot_app]: http://1.bp.blogspot.com/_n6fub3mZ0JU/TTajLErGu-I/AAAAAAAAAEA/AKkO6CcKdxs/s320/payroll_csv_ui.png
 
 
 
