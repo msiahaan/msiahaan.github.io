@@ -29,15 +29,17 @@ LINKS = (('Pelican', 'http://getpelican.com/'),
 SOCIAL = (('Twitter', 'https://twitter.com/bangmico'),
           ('Facebook', 'https://facebook.com/mico.siahaan'),)
 
-DEFAULT_PAGINATION = 10
+DEFAULT_PAGINATION = 5
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
 
 #Use other theme
-<<<<<<< HEAD
-THEME = 'themes/notmyidea'
-=======
-#THEME = 'content/theme/pelican-bootstrap3'
-#JINJA_ENVIRONMENT = {'extensions': ['jinja2.ext.i18n']}
->>>>>>> 7d75f577aa6b74be35f216f6961358cd170ba44a
+THEME = 'themes/buruma'
+
+JINJA_ENVIRONMENT = {
+    'extensions': ['jinja2.ext.i18n'],
+}
+
+PLUGIN_PATHS = ["plugins"]
+PLUGINS = ["i18n_subsites"]
