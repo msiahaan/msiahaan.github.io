@@ -35,4 +35,9 @@ DEFAULT_PAGINATION = 10
 #RELATIVE_URLS = True
 
 #Use other theme
+<<<<<<< HEAD
 THEME = '/home/micosiahaan/staticwebsite/lib/python3.8/site-packages/pelican/themes/notmyidea'
+=======
+#THEME = 'content/theme/pelican-bootstrap3'
+#JINJA_ENVIRONMENT = {'extensions': ['jinja2.ext.i18n']}
+>>>>>>> 7d75f577aa6b74be35f216f6961358cd170ba44a
