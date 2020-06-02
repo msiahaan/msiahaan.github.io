@@ -34,24 +34,24 @@
 <h2>Clone Template Repository</h2>
 <p>Mula-mula saya me-download koleksi template Pelican dari repositori dengan cara melakukan <em>clone</em> repositori <a href="https://github.com/getpelican/pelican-plugins">Pelican Themes GitHub</a>. Template saya letakkan di /home/micosiahaan/staticwebsite/websites</p>
 <p>Saya pindah ke direktori /home/micosiahaan/staticwebsite/websites</p>
-<div class="highlight"><pre><span></span>$  git clone https://github.com/getpelican/pelican-plugins.git pelican-themes
-</pre></div>
+<div class="highlight"><pre><span></span><code>$  git clone https://github.com/getpelican/pelican-plugins.git pelican-themes
+</code></pre></div>
 
 
 <p>Maka di direktori /home/micosiahaan/staticwebsite/websites akan terbentuk direktori pelican-themes. Direktori pelican-themes berisikan direktori-direktori yang berisikan template.</p>
 <p>Kemudian pindah ke direktori yang berisikan projek <em>blog</em>. </p>
 <h2>Membuat Link ke Direktori Template</h2>
 <p>Lanhkah selanjutnya adalah membuat link dari template yang akan saya gunakan. Saya memilih template <em>bootstrap2</em> yang berada dalam direktori pelican-themes/bootstrap2</p>
-<div class="highlight"><pre><span></span>$  mkdir -p content/themes
+<div class="highlight"><pre><span></span><code>$  mkdir -p content/themes
 $  ln -s home/micosiahaan/staticwebsite/websites/pelican-themes/bootstrap2 content/themes/bootstrap2
-</pre></div>
+</code></pre></div>
 
 
 <h2>Edit pelicanconf.py</h2>
 <p>Cari baris yang berisikan variable THEME, dan isikan alamat direktori template</p>
-<div class="highlight"><pre><span></span><span class="err">#Use other theme</span>
+<div class="highlight"><pre><span></span><code><span class="err">#Use other theme</span>
 <span class="err">THEME = &#39;content/themes/bootstrap2&#39;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Save, pelicanconf.py dan <em>VOILA!</em> template yang baru siap digunakan</p>                </article>
@@ -80,16 +80,16 @@ $  ln -s home/micosiahaan/staticwebsite/websites/pelican-themes/bootstrap2 conte
 
 </footer><!-- /.post-info -->                <p>Tadi malam, saya memmberikan pengenalan pemrograman Python kepada kaum Bapak Gereja Kristen Berbahasa Indonesia (GKBI) Kuala Lumpur. Demo <em>coding</em> menggunakan <em>Jupyter Notebook</em>. Notebook kemudian saya <em>Save As</em> sebagai file <em>markdown</em> sehingga mudah untuk dikonversi menjadi blog.</p>
 <h1>Mem-print output</h1>
-<div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Selamat pagi!&#39;</span><span class="p">)</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Selamat pagi!&#39;</span><span class="p">)</span>
+</code></pre></div>
 
 
-<div class="highlight"><pre><span></span><span class="err">Selamat pagi!</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">Selamat pagi!</span>
+</code></pre></div>
 
 
 <h1>Menanyakan Input</h1>
-<div class="highlight"><pre><span></span><span class="n">nama</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Siapa nama Anda …</span></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">nama</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Siapa nama Anda …</span></code></pre></div>
                 <a class="readmore" href="/sesi-sharing-ppkbi-pemrograman-python.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
@@ -136,7 +136,7 @@ $  ln -s home/micosiahaan/staticwebsite/websites/pelican-themes/bootstrap2 conte
 <p>In <a href="/category/python.html">Python</a>.</p>
 
 </footer><!-- /.post-info -->                <h1>Zen of Python</h1>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">this</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">this</span>
 <span class="n">The</span> <span class="n">Zen</span> <span class="n">of</span> <span class="n">Python</span><span class="p">,</span> <span class="n">by</span> <span class="n">Tim</span> <span class="n">Peters</span>
 
 <span class="n">Beautiful</span> <span class="ow">is</span> <span class="n">better</span> <span class="n">than</span> <span class="n">ugly</span><span class="o">.</span>
@@ -146,77 +146,8 @@ $  ln -s home/micosiahaan/staticwebsite/websites/pelican-themes/bootstrap2 conte
 <span class="n">Flat</span> <span class="ow">is</span> <span class="n">better</span> <span class="n">than</span> <span class="n">nested</span><span class="o">.</span>
 <span class="n">Sparse</span> <span class="ow">is</span> <span class="n">better</span> <span class="n">than</span> <span class="n">dense</span><span class="o">.</span>
 <span class="n">Readability</span> <span class="n">counts</span><span class="o">.</span>
-<span class="n">Special</span> <span class="n">cases</span> <span class="n">aren</span><span class="s1">&#39;t special enough …</span></pre></div>
+<span class="n">Special</span> <span class="n">cases</span> <span class="n">aren</span><span class="s1">&#39;t special enough …</span></code></pre></div>
                 <a class="readmore" href="/zen-of-python.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/menghitung-pi.html" rel="bookmark"
-                           title="Permalink to Menghitung Pi">Menghitung Pi</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2014-02-02T06:54:00+08:00">
-                Published: Sun 02 February 2014
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/msiahaan.html">msiahaan</a>
-        </address>
-<p>In <a href="/category/python.html">Python</a>.</p>
-<p>tags: <a href="/tag/python.html">python</a> </p>
-</footer><!-- /.post-info -->                <p>Wah, lama tidak menggunakan Python, otak terasa buntu. Soal yang perlu dipecahkan sederhana: hitunglah <em>Pi</em> menggunakan <a href="https://en.wikipedia.org/wiki/Wallis_product">Wallis Formula</a>setelah 1 jam mencoba, maka saya menemukan potongan kode yang saya rasa betul:</p>
-<div class="highlight"><pre><span></span><span class="err">In [50]: pi = 2 * reduce(lambda x,y: x*y, [(4.0*i**2)/(4.0*i**2-1) for …</span></pre></div>
-                <a class="readmore" href="/menghitung-pi.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/solusi-dengan-python-cepat-mudah.html" rel="bookmark"
-                           title="Permalink to Solusi dengan Python, Cepat Mudah Membuat CSV: modul CSV">Solusi dengan Python, Cepat Mudah Membuat CSV: modul CSV</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2011-01-19T15:41:00+08:00">
-                Published: Wed 19 January 2011
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/msiahaan.html">msiahaan</a>
-        </address>
-<p>In <a href="/category/python.html">Python</a>.</p>
-<p>tags: <a href="/tag/python.html">python</a> </p>
-</footer><!-- /.post-info -->                <p>Salah satu kelebihkan python yang sangat saya sukai adalah python memiliki koleksi modul yang lengkap dan mencakup berbagai jenis tugas sehingga saya dapat dengan cepat mencari solusi dari  permasalahan yang ada.</p>
-<p>Contohnya kemarin akuntan kantor bingung karena dia diminta oleh bank untuk mensubmit file csv yang berisikan data-data untuk transfer …</p>
-                <a class="readmore" href="/solusi-dengan-python-cepat-mudah.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/aplikasi-ping-me.html" rel="bookmark"
-                           title="Permalink to Aplikasi: Ping Me!">Aplikasi: Ping Me!</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2010-09-01T04:33:00+08:00">
-                Published: Wed 01 September 2010
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/msiahaan.html">msiahaan</a>
-        </address>
-<p>In <a href="/category/python.html">Python</a>.</p>
-<p>tags: <a href="/tag/belajar.html">belajar</a> <a href="/tag/aplikasi.html">aplikasi</a> <a href="/tag/python.html">python</a> </p>
-</footer><!-- /.post-info -->                <p>Saya sering mengalami koneksi internet dengan Speedy kurang stabil, sering putus. Browsing di internet banyak yang menuliskan bahwa koneksi internet dapat dibuat lebih stabil dengan melakukan ping terus-menerus ke server tertentu yang stabil. Caranya misalnya dituliskan di blog <a href="http://ariawijaya.com/2009/09/22/koneksi-internet-kurang-stabil-di-%E2%80%98ping%E2%80%99-aja/">Ariawijaya</a>.</p>
-<p>Tapi, saya orang yang malas untuk mengetikkan perintah di command prompt …</p>
-                <a class="readmore" href="/aplikasi-ping-me.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
@@ -228,7 +159,6 @@ $  ln -s home/micosiahaan/staticwebsite/websites/pelican-themes/bootstrap2 conte
                             <li><a href="http://getpelican.com/">Pelican</a></li>
                             <li><a href="http://python.org/">Python.org</a></li>
                             <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
                         </ul>
                 </div><!-- /.blogroll -->
                 <div class="social">
@@ -236,8 +166,8 @@ $  ln -s home/micosiahaan/staticwebsite/websites/pelican-themes/bootstrap2 conte
                         <ul>
                             <li><a href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
 
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
+                            <li><a href="https://twitter.com/bangmico">Twitter</a></li>
+                            <li><a href="https://facebook.com">Facebook</a></li>
                         </ul>
                 </div><!-- /.social -->
         </section><!-- /#extras -->

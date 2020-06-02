@@ -34,8 +34,8 @@
 <p>Selain itu <a href="http://github.com">GitHub</a> juga menyediakan layanan untuk membuat <em>website</em> dari repository yang ada: <a href="http://pages.github.com">GitHub Pages</a>. Dalam tulisan ini saya menuliskan bagaimana saya membuat blog menggunakan <a href="http://getpelican.com">Pelican</a> (aplikasi membuat halaman web statis) yang kemudian dipublikasikan sebagai halaman web di <a href="http://github.com">GitHub</a>. Tulisan ini merujuk kepada <a href="https://opensource.com/article/19/5/run-your-blog-github-pages-python">Run your blog on GitHub Pages with Python</a></p>
 <h2>Membuat  <em>Virtual Environment</em> untuk Projek Blog</h2>
 <p>Pertama, saya lebih suka membuat <em>virtual environment</em> tersendiri untuk projek blog ini agar tidak bercampur dengan projek lain.</p>
-<div class="highlight"><pre><span></span>$  python -m venv websites
-</pre></div>
+<div class="highlight"><pre><span></span><code>$  python -m venv websites
+</code></pre></div>
 
 
 <h2>Instalasi Pelican, Markdown dan ghp-import</h2>
@@ -46,10 +46,10 @@
 <li><a href="https://pypi.org/project/ghp-import/">ghp-import</a></li>
 </ol>
 <p>Caranya, pakai <code>pip</code> dong!</p>
-<div class="highlight"><pre><span></span>$  <span class="nb">cd</span> websites
+<div class="highlight"><pre><span></span><code>$  <span class="nb">cd</span> websites
 $  <span class="nb">source</span> bin/activate
 $  pip install Pelican Markdown ghp-import
-</pre></div>
+</code></pre></div>
 
 
 <h2>Membuat Repository untuk Blog di GitHub</h2>
@@ -57,21 +57,21 @@ $  pip install Pelican Markdown ghp-import
 <img alt="Create Repository" src="/images/github-pages-create.png"></p>
 <h2>Membuat Clone dari Repository</h2>
 <p>Ini keempat ya. Setelah <em>repository</em> di GitHub ada, <em>clone</em> <em>repository</em> <code>username.github.io</code> di PC/laptop lokal:</p>
-<div class="highlight"><pre><span></span>$  git clone https://github.com/username/username.github.io blog
+<div class="highlight"><pre><span></span><code>$  git clone https://github.com/username/username.github.io blog
 $  <span class="nb">cd</span> blog
-</pre></div>
+</code></pre></div>
 
 
 <p>Selanjutnya, ini tips ampuh yang dari penulis <a href="https://opensource.com/article/19/5/run-your-blog-github-pages-python">Run your blog on GitHub Pages with Python</a>: buat cabang terpisah untuk <em>bahan dasar</em> dan <em>barang jadi</em>. <em>Bahan dasar</em> adalah berkas-berkas dalam format <strong>Markdown</strong>, berkas-berkas konfigurasi dari Pelican. <em>Barang jadi</em> adalah berkas-berkas untuk situs web (<code>*.html</code>, images).</p>
-<div class="highlight"><pre><span></span>$  git checkout -b content
+<div class="highlight"><pre><span></span><code>$  git checkout -b content
 Switch to a new branch <span class="s1">&#39;content&#39;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p><strong>content</strong> adalah cabang tempat kerja dalam mengedit <em>barang mentah</em> sementara <em>barang jadi</em> halaman-halaman web akan ditempatkan di cabang <strong>master</strong>.</p>
 <h2>Mengkonfigurasi Pelican</h2>
 <p>Sampailah ke tahap lima: membuat berkas konfigurasi situs web. Pelican menyediakan skrip untuk mengotomasi proses konfigurasi: <code>pelican-quickstart</code></p>
-<div class="highlight"><pre><span></span><span class="err">$</span><span class="w"> </span><span class="n">pelican</span><span class="o">-</span><span class="n">quickstart</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">pelican</span><span class="o">-</span><span class="n">quickstart</span><span class="w"></span>
 <span class="n">WWelcome</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">pelican</span><span class="o">-</span><span class="n">quickstart</span><span class="w"> </span><span class="n">v4</span><span class="mf">.2.0</span><span class="p">.</span><span class="w"></span>
 
 <span class="n">This</span><span class="w"> </span><span class="n">script</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">help</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="k">create</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Pelican</span><span class="o">-</span><span class="n">based</span><span class="w"> </span><span class="n">website</span><span class="p">.</span><span class="w"></span>
@@ -97,7 +97,7 @@ Switch to a new branch <span class="s1">&#39;content&#39;</span>
 <span class="o">&gt;</span><span class="w"> </span><span class="n">Do</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">want</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">upload</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">website</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">GitHub</span><span class="w"> </span><span class="n">Pages</span><span class="vm">?</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">N</span><span class="p">)</span><span class="w"> </span><span class="n">y</span><span class="w"></span>
 <span class="o">&gt;</span><span class="w"> </span><span class="k">Is</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">personal</span><span class="w"> </span><span class="n">page</span><span class="w"> </span><span class="p">(</span><span class="n">username</span><span class="p">.</span><span class="n">github</span><span class="p">.</span><span class="n">io</span><span class="p">)</span><span class="vm">?</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">N</span><span class="p">)</span><span class="w"> </span><span class="n">y</span><span class="w"></span>
 <span class="n">Done</span><span class="p">.</span><span class="w"> </span><span class="n">Your</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">project</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">available</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">users</span><span class="o">/</span><span class="n">websites</span><span class="o">/</span><span class="n">blog</span><span class="w"></span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Beberapa hal yang perlu <strong>dijawab</strong>:</p>
@@ -108,25 +108,25 @@ Switch to a new branch <span class="s1">&#39;content&#39;</span>
 <li>Upload ke GitHub Pages, "y"</li>
 </ol>
 <p>Pelican secara otomatis akan membuat struktur direktori dan berkas konfigurasi yang diperlukan.</p>
-<div class="highlight"><pre><span></span>$  ls
+<div class="highlight"><pre><span></span><code>$  ls
 
 content  Makefile  output  pelicanconf.py  publishconf.py  tasks.py
-</pre></div>
+</code></pre></div>
 
 
 <p>Sampailah kita ke langkah ke-enam: tambahkan berkas-berkas konfigurasi dan direktori buatan Pelican ke cabang <strong>content</strong> , <em>commit</em> perubahan dan <em>push</em> perubahan di cabang lokal ke repo di GitHub.</p>
-<div class="highlight"><pre><span></span>$ git add .
+<div class="highlight"><pre><span></span><code>$ git add .
 $ git commit -m <span class="s1">&#39;initial pelican commit to content&#39;</span>
 $ git push origin content
-</pre></div>
+</code></pre></div>
 
 
 <h2>Membuat Post Pertama</h2>
 <p>Setelah melalui persiapan panjang, maka saatnya untuk membuat <em>post</em> pertama menggunakan <em>text editor</em> favorit: <a href="https://www.sublimetext.com/">SublimeText</a>. Anda bebas menggunakan <em>editor</em> yang Anda suka. Post saya tulis dalam format Markdown (Cek ulang: paket Markdown sudah terinstall atau belum).</p>
-<div class="highlight"><pre><span></span>$  <span class="nb">cd</span> content
+<div class="highlight"><pre><span></span><code>$  <span class="nb">cd</span> content
 $  mkdir pages images
 $  subl first-post.md
-</pre></div>
+</code></pre></div>
 
 
 <p>Direktori <strong>pages</strong> untuk menyimpan halaman web statis yang jarang diedit, contohnya di halaman <em>About Us</em> atau <em>Contact Us</em>. Direktori <strong>images</strong> untuk menyimpan berkas-berkas <em>image</em> yang digunakan dalam <em>post</em> atau <em>page</em>.</p>
@@ -137,117 +137,42 @@ $  subl first-post.md
 <ul>
 <li>Jalankan Pelican untuk membuat halaman web statis di direktori <strong>content</strong></li>
 </ul>
-<div class="highlight"><pre><span></span>$  pelican content -o output -s publishconf.py
-</pre></div>
+<div class="highlight"><pre><span></span><code>$  pelican content -o output -s publishconf.py
+</code></pre></div>
 
 
 <ul>
 <li>Gunakan <strong>ghp-import</strong> untuk memuat isi direktori <strong>output</strong> ke cabang <strong>master</strong></li>
 </ul>
-<div class="highlight"><pre><span></span><span class="err">$</span>  <span class="n">ghp</span><span class="o">-</span><span class="kn">import</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;Pelican site ku&quot;</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">jekyll</span> <span class="o">-</span><span class="n">b</span> <span class="n">master</span> <span class="n">output</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">$</span>  <span class="n">ghp</span><span class="o">-</span><span class="kn">import</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;Pelican site ku&quot;</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">jekyll</span> <span class="o">-</span><span class="n">b</span> <span class="n">master</span> <span class="n">output</span>
+</code></pre></div>
 
 
 <ul>
 <li><em>Push</em> cabang <strong>master</strong> lokal ke repo di GitHub</li>
 </ul>
-<div class="highlight"><pre><span></span>$  git push origin master
-</pre></div>
+<div class="highlight"><pre><span></span><code>$  git push origin master
+</code></pre></div>
 
 
 <ul>
 <li><em>Commit</em> dan <em>push</em> ke cabang <strong>content</strong></li>
 </ul>
-<div class="highlight"><pre><span></span>$  git add content
+<div class="highlight"><pre><span></span><code>$  git add content
 $  git commit -m <span class="s2">&quot;buat post pertama: Zen of Python&quot;</span>
 $  git push origin
-</pre></div>
+</code></pre></div>
 
 
 <h2>Enjoy Aja!</h2>
 <p>Nah, sekaran waktunya menikmati Blog baru. Buka browser </p>
-<div class="highlight"><pre><span></span><span class="c">https://username.github.io</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="c">https://username.github.io</span>
+</code></pre></div>
 
 
 <p><img alt="My First Post View" src="/images/first-post-view.png"></p>
 <p>Untuk menyunting atau membuat <em>post</em>, ulangi langkah-langkah pembuatan <em>post</em> serta <em>publish</em> di atas. Selamat blogging.</p>                </article>
             </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/menghitung-pi.html" rel="bookmark"
-                           title="Permalink to Menghitung Pi">Menghitung Pi</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2014-02-02T06:54:00+08:00">
-                Published: Sun 02 February 2014
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/msiahaan.html">msiahaan</a>
-        </address>
-<p>In <a href="/category/python.html">Python</a>.</p>
-<p>tags: <a href="/tag/python.html">python</a> </p>
-</footer><!-- /.post-info -->                <p>Wah, lama tidak menggunakan Python, otak terasa buntu. Soal yang perlu dipecahkan sederhana: hitunglah <em>Pi</em> menggunakan <a href="https://en.wikipedia.org/wiki/Wallis_product">Wallis Formula</a>setelah 1 jam mencoba, maka saya menemukan potongan kode yang saya rasa betul:</p>
-<div class="highlight"><pre><span></span><span class="err">In [50]: pi = 2 * reduce(lambda x,y: x*y, [(4.0*i**2)/(4.0*i**2-1) for …</span></pre></div>
-                <a class="readmore" href="/menghitung-pi.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/solusi-dengan-python-cepat-mudah.html" rel="bookmark"
-                           title="Permalink to Solusi dengan Python, Cepat Mudah Membuat CSV: modul CSV">Solusi dengan Python, Cepat Mudah Membuat CSV: modul CSV</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2011-01-19T15:41:00+08:00">
-                Published: Wed 19 January 2011
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/msiahaan.html">msiahaan</a>
-        </address>
-<p>In <a href="/category/python.html">Python</a>.</p>
-<p>tags: <a href="/tag/python.html">python</a> </p>
-</footer><!-- /.post-info -->                <p>Salah satu kelebihkan python yang sangat saya sukai adalah python memiliki koleksi modul yang lengkap dan mencakup berbagai jenis tugas sehingga saya dapat dengan cepat mencari solusi dari  permasalahan yang ada.</p>
-<p>Contohnya kemarin akuntan kantor bingung karena dia diminta oleh bank untuk mensubmit file csv yang berisikan data-data untuk transfer …</p>
-                <a class="readmore" href="/solusi-dengan-python-cepat-mudah.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/aplikasi-ping-me.html" rel="bookmark"
-                           title="Permalink to Aplikasi: Ping Me!">Aplikasi: Ping Me!</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2010-09-01T04:33:00+08:00">
-                Published: Wed 01 September 2010
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/msiahaan.html">msiahaan</a>
-        </address>
-<p>In <a href="/category/python.html">Python</a>.</p>
-<p>tags: <a href="/tag/belajar.html">belajar</a> <a href="/tag/aplikasi.html">aplikasi</a> <a href="/tag/python.html">python</a> </p>
-</footer><!-- /.post-info -->                <p>Saya sering mengalami koneksi internet dengan Speedy kurang stabil, sering putus. Browsing di internet banyak yang menuliskan bahwa koneksi internet dapat dibuat lebih stabil dengan melakukan ping terus-menerus ke server tertentu yang stabil. Caranya misalnya dituliskan di blog <a href="http://ariawijaya.com/2009/09/22/koneksi-internet-kurang-stabil-di-%E2%80%98ping%E2%80%99-aja/">Ariawijaya</a>.</p>
-<p>Tapi, saya orang yang malas untuk mengetikkan perintah di command prompt …</p>
-                <a class="readmore" href="/aplikasi-ping-me.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-                </ol><!-- /#posts-list -->
-                </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="blogroll">
                         <h2>links</h2>
@@ -255,7 +180,6 @@ $  git push origin
                             <li><a href="http://getpelican.com/">Pelican</a></li>
                             <li><a href="http://python.org/">Python.org</a></li>
                             <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
                         </ul>
                 </div><!-- /.blogroll -->
                 <div class="social">
@@ -263,8 +187,8 @@ $  git push origin
                         <ul>
                             <li><a href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
 
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
+                            <li><a href="https://twitter.com/bangmico">Twitter</a></li>
+                            <li><a href="https://facebook.com">Facebook</a></li>
                         </ul>
                 </div><!-- /.social -->
         </section><!-- /#extras -->
