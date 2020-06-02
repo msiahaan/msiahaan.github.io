@@ -27,7 +27,7 @@ LINKS = (('Pelican', 'http://getpelican.com/'),
 
 # Social widget
 SOCIAL = (('Twitter', 'https://twitter.com/bangmico'),
-          ('Facebook', 'https://facebook.com'),)
+          ('Facebook', 'https://facebook.com/mico.siahaan'),)
 
 DEFAULT_PAGINATION = 10
 
@@ -36,7 +36,7 @@ DEFAULT_PAGINATION = 10
 
 #Use other theme
 <<<<<<< HEAD
-THEME = '/home/micosiahaan/staticwebsite/lib/python3.8/site-packages/pelican/themes/notmyidea'
+THEME = 'themes/notmyidea'
 =======
 #THEME = 'content/theme/pelican-bootstrap3'
 #JINJA_ENVIRONMENT = {'extensions': ['jinja2.ext.i18n']}
