@@ -5,7 +5,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE-edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 			<meta name="author" content="msiahaan" />
-		<title>Categories- Bangmico Python Blog
+		<title>Menghitung Pi  - Bangmico Python Blog
 </title>
 		<link rel="stylesheet" type="text/css" href="/theme/css/style.min.css">
 		<script src="/theme/js/menu.js"></script>
@@ -44,15 +44,22 @@ Categories						</a>
 			</nav>
 		<section class="section">
 			<div class="container">
-	<h1 class="title">Categories</h1>
-
-	<div class="columns is-multiline is-centered">
-		<div class="tags are-large has-text-white">
-		<div class="column has-text-centered">
-			<p><span class="tag "><a href="category/python.html">Python</a></p>
-			</div>
-		</div>
+<article class="message is-info">
+	<div class="message-header">
+		Menghitung Pi
 	</div>
+	<div class="message-body has-text-dark">
+		<p>Wah, lama tidak menggunakan Python, otak terasa buntu. Soal yang perlu dipecahkan sederhana: hitunglah <em>Pi</em> menggunakan <a href="https://en.wikipedia.org/wiki/Wallis_product">Wallis Formula</a>setelah 1 jam mencoba, maka saya menemukan potongan kode yang saya rasa betul:</p>
+<div class="highlight"><pre><span></span><code><span class="err">In [50]: pi = 2 * reduce(lambda x,y: x*y, [(4.0*i**2)/(4.0*i**2-1) for i in xrange(1,1000)])</span>
+<span class="err">In [51]: pi</span>
+<span class="err">Out[51]: 3.1408069608284657</span>
+</code></pre></div>
+
+
+<p>Wah, ternyata lebih ribet dari yang saya kira pada awalnya. Namun <em>cool</em>... kita dapat menghitung <em>Pi</em> hanya dengan <strong>satu baris kode</strong> yang melibatkan <em>fungsi built-in reduce</em>, <em>lambda</em>, serta <em>list comprehension</em>. Yang baru saya pelajari dan gunakan adalah fungsi <em>reduce</em>. Potongan penjelasan mengenai fungsi <em>reduce</em> dari <em>help</em> Python:</p>
+<p>Apply function of two arguments cumulatively to the items of iterable, from left to right, so as to reduce the iterable to a single value. For example, reduce(lambda x, y: x+y, [1, 2, 3, 4, 5]) calculates ((((1+2)+3)+4)+5). The left argument, x, is the accumulated value and the right argument, y, is the update value from the iterable. If the optional initializer is present, it is placed before the items of the iterable in the calculation, and serves as a default when the iterable is empty. If initializer is not given and iterable contains only one item, the first item is returned.</p>
+	</div>
+</article>
 			</div>
 		</section>
 		<footer class="footer">
