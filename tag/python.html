@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Bangmico Python Blog - python</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Bangmico Python Blog Atom Feed" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Bangmico Python Blog </a></h1>
+                <nav><ul>
+                    <li><a href="/pages/tentang-saya.html">Tentang Saya</a></li>
+                    <li><a href="/category/python.html">Python</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/membuat-blog-di-github.html">Membuat Blog di GitHub</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2020-05-01T19:57:00+08:00">
+                Published: Fri 01 May 2020
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/msiahaan.html">msiahaan</a>
+        </address>
+<p>In <a href="/category/python.html">Python</a>.</p>
+<p>tags: <a href="/tag/python.html">python</a> <a href="/tag/github.html">github</a> </p>
+</footer><!-- /.post-info --><h1>Membuat Blog dengan Pelican di Github</h1>
+<p><a href="http://github.com">GitHub</a> adalah penyedia layanan bagi pemrogram untuk berkolaborasi dalam pengembangan aplikasi. Tim pemrogram dapat meletakkan kode sumber di Github dalam sebuah <em>repository</em> dan pemrogram lain dapat berkolaborasi melalui <em>clone</em> dari <em>repository</em> tersebut.</p>
+<p>Selain itu <a href="http://github.com">GitHub</a> juga menyediakan layanan untuk membuat <em>website</em> dari repository yang ada: <a href="http://pages.github.com">GitHub Pages</a>. Dalam tulisan ini saya menuliskan bagaimana saya membuat blog menggunakan <a href="http://getpelican.com">Pelican</a> (aplikasi membuat halaman web statis) yang kemudian dipublikasikan sebagai halaman web di <a href="http://github.com">GitHub</a>. Tulisan ini merujuk kepada <a href="https://opensource.com/article/19/5/run-your-blog-github-pages-python">Run your blog on GitHub Pages with Python</a></p>
+<h2>Membuat  <em>Virtual Environment</em> untuk Projek Blog</h2>
+<p>Pertama, saya lebih suka membuat <em>virtual environment</em> tersendiri untuk projek blog ini agar tidak bercampur dengan projek lain.</p>
+<div class="highlight"><pre><span></span>$  python -m venv websites
+</pre></div>
+
+
+<h2>Instalasi Pelican, Markdown dan ghp-import</h2>
+<p>Kedua, <em>install</em> paket yang diperlukan:</p>
+<ol>
+<li><a href="http://getpelican.com">Pelican</a></li>
+<li><a href="https://pypi.org/project/Markdown/">Markdown</a></li>
+<li><a href="https://pypi.org/project/ghp-import/">ghp-import</a></li>
+</ol>
+<p>Caranya, pakai <code>pip</code> dong!</p>
+<div class="highlight"><pre><span></span>$  <span class="nb">cd</span> websites
+$  <span class="nb">source</span> bin/activate
+$  pip install Pelican Markdown ghp-import
+</pre></div>
+
+
+<h2>Membuat Repository untuk Blog di GitHub</h2>
+<p>Nah, kini waktunya untuk membuat repository untuk projek blog. Sesuai dengan amanat <a href="http://pages.github.com">GitHub Pages</a> maka repository untuk GitHub Pages harus dinamai <code>username.github.io</code>
+<img alt="Create Repository" src="/images/github-pages-create.png"></p>
+<h2>Membuat Clone dari Repository</h2>
+<p>Ini keempat ya. Setelah <em>repository</em> di GitHub ada, <em>clone</em> <em>repository</em> <code>username.github.io</code> di PC/laptop lokal:</p>
+<div class="highlight"><pre><span></span>$  git clone https://github.com/username/username.github.io blog
+$  <span class="nb">cd</span> blog
+</pre></div>
+
+
+<p>Selanjutnya, ini tips ampuh yang dari penulis <a href="https://opensource.com/article/19/5/run-your-blog-github-pages-python">Run your blog on GitHub Pages with Python</a>: buat cabang terpisah untuk <em>bahan dasar</em> dan <em>barang jadi</em>. <em>Bahan dasar</em> adalah berkas-berkas dalam format <strong>Markdown</strong>, berkas-berkas konfigurasi dari Pelican. <em>Barang jadi</em> adalah berkas-berkas untuk situs web (<code>*.html</code>, images).</p>
+<div class="highlight"><pre><span></span>$  git checkout -b content
+Switch to a new branch <span class="s1">&#39;content&#39;</span>
+</pre></div>
+
+
+<p><strong>content</strong> adalah cabang tempat kerja dalam mengedit <em>barang mentah</em> sementara <em>barang jadi</em> halaman-halaman web akan ditempatkan di cabang <strong>master</strong>.</p>
+<h2>Mengkonfigurasi Pelican</h2>
+<p>Sampailah ke tahap lima: membuat berkas konfigurasi situs web. Pelican menyediakan skrip untuk mengotomasi proses konfigurasi: <code>pelican-quickstart</code></p>
+<div class="highlight"><pre><span></span><span class="err">$</span><span class="w"> </span><span class="n">pelican</span><span class="o">-</span><span class="n">quickstart</span><span class="w"></span>
+<span class="n">WWelcome</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">pelican</span><span class="o">-</span><span class="n">quickstart</span><span class="w"> </span><span class="n">v4</span><span class="mf">.2.0</span><span class="p">.</span><span class="w"></span>
+
+<span class="n">This</span><span class="w"> </span><span class="n">script</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">help</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="k">create</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Pelican</span><span class="o">-</span><span class="n">based</span><span class="w"> </span><span class="n">website</span><span class="p">.</span><span class="w"></span>
+
+<span class="n">Please</span><span class="w"> </span><span class="n">answer</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">following</span><span class="w"> </span><span class="n">questions</span><span class="w"> </span><span class="n">so</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">script</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">generate</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">files</span><span class="w"></span>
+<span class="n">needed</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">Pelican</span><span class="p">.</span><span class="w"></span>
+
+
+<span class="o">&gt;</span><span class="w"> </span><span class="k">Where</span><span class="w"> </span><span class="n">do</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">want</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="k">create</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">web</span><span class="w"> </span><span class="n">site</span><span class="vm">?</span><span class="w"> </span><span class="o">[</span><span class="n">.</span><span class="o">]</span><span class="w"> </span>
+<span class="o">&gt;</span><span class="w"> </span><span class="n">What</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">web</span><span class="w"> </span><span class="n">site</span><span class="vm">?</span><span class="w"> </span><span class="n">My</span><span class="w"> </span><span class="n">Blog</span><span class="w"></span>
+<span class="o">&gt;</span><span class="w"> </span><span class="n">Who</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">author</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">web</span><span class="w"> </span><span class="n">site</span><span class="vm">?</span><span class="w"> </span><span class="n">username</span><span class="w"></span>
+<span class="o">&gt;</span><span class="w"> </span><span class="n">What</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="k">language</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">web</span><span class="w"> </span><span class="n">site</span><span class="vm">?</span><span class="w"> </span><span class="o">[</span><span class="n">en</span><span class="o">]</span><span class="w"> </span>
+<span class="o">&gt;</span><span class="w"> </span><span class="n">Do</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">want</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">specify</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">URL</span><span class="w"> </span><span class="k">prefix</span><span class="vm">?</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">g</span><span class="p">.,</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="p">.</span><span class="n">com</span><span class="w">   </span><span class="p">(</span><span class="n">Y</span><span class="o">/</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="n">n</span><span class="w"></span>
+<span class="o">&gt;</span><span class="w"> </span><span class="n">Do</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">want</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">enable</span><span class="w"> </span><span class="n">article</span><span class="w"> </span><span class="n">pagination</span><span class="vm">?</span><span class="w"> </span><span class="p">(</span><span class="n">Y</span><span class="o">/</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="n">y</span><span class="w"></span>
+<span class="o">&gt;</span><span class="w"> </span><span class="n">How</span><span class="w"> </span><span class="n">many</span><span class="w"> </span><span class="n">articles</span><span class="w"> </span><span class="n">per</span><span class="w"> </span><span class="n">page</span><span class="w"> </span><span class="n">do</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">want</span><span class="vm">?</span><span class="w"> </span><span class="o">[</span><span class="n">10</span><span class="o">]</span><span class="w"> </span><span class="mi">10</span><span class="w"></span>
+<span class="o">&gt;</span><span class="w"> </span><span class="n">What</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="nc">time</span><span class="w"> </span><span class="k">zone</span><span class="vm">?</span><span class="w"> </span><span class="o">[</span><span class="n">Europe/Paris</span><span class="o">]</span><span class="w"> </span><span class="n">Asia</span><span class="o">/</span><span class="n">Kuala_Lumpur</span><span class="w"></span>
+<span class="o">&gt;</span><span class="w"> </span><span class="n">Do</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">want</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">generate</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">tasks</span><span class="p">.</span><span class="n">py</span><span class="o">/</span><span class="n">Makefile</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">automate</span><span class="w"> </span><span class="n">generation</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">publishing</span><span class="vm">?</span><span class="w"> </span><span class="p">(</span><span class="n">Y</span><span class="o">/</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="n">y</span><span class="w"></span>
+<span class="o">&gt;</span><span class="w"> </span><span class="n">Do</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">want</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">upload</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">website</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">FTP</span><span class="vm">?</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">N</span><span class="p">)</span><span class="w"> </span><span class="n">n</span><span class="w"></span>
+<span class="o">&gt;</span><span class="w"> </span><span class="n">Do</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">want</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">upload</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">website</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">SSH</span><span class="vm">?</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">N</span><span class="p">)</span><span class="w"> </span><span class="n">n</span><span class="w"></span>
+<span class="o">&gt;</span><span class="w"> </span><span class="n">Do</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">want</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">upload</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">website</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">Dropbox</span><span class="vm">?</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">N</span><span class="p">)</span><span class="w"> </span><span class="n">n</span><span class="w"></span>
+<span class="o">&gt;</span><span class="w"> </span><span class="n">Do</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">want</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">upload</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">website</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">S3</span><span class="vm">?</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">N</span><span class="p">)</span><span class="w"> </span><span class="n">n</span><span class="w"></span>
+<span class="o">&gt;</span><span class="w"> </span><span class="n">Do</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">want</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">upload</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">website</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">Rackspace</span><span class="w"> </span><span class="n">Cloud</span><span class="w"> </span><span class="n">Files</span><span class="vm">?</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">N</span><span class="p">)</span><span class="w"> </span><span class="n">n</span><span class="w"></span>
+<span class="o">&gt;</span><span class="w"> </span><span class="n">Do</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">want</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">upload</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">website</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">GitHub</span><span class="w"> </span><span class="n">Pages</span><span class="vm">?</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">N</span><span class="p">)</span><span class="w"> </span><span class="n">y</span><span class="w"></span>
+<span class="o">&gt;</span><span class="w"> </span><span class="k">Is</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">personal</span><span class="w"> </span><span class="n">page</span><span class="w"> </span><span class="p">(</span><span class="n">username</span><span class="p">.</span><span class="n">github</span><span class="p">.</span><span class="n">io</span><span class="p">)</span><span class="vm">?</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">N</span><span class="p">)</span><span class="w"> </span><span class="n">y</span><span class="w"></span>
+<span class="n">Done</span><span class="p">.</span><span class="w"> </span><span class="n">Your</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">project</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">available</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">users</span><span class="o">/</span><span class="n">websites</span><span class="o">/</span><span class="n">blog</span><span class="w"></span>
+</pre></div>
+
+
+<p>Beberapa hal yang perlu <strong>dijawab</strong>:</p>
+<ol>
+<li>Judul/title dari website</li>
+<li>Penulis/author dari website</li>
+<li>Zona waktu, saya mengunakan Asia/Kuala_Lumpur</li>
+<li>Upload ke GitHub Pages, "y"</li>
+</ol>
+<p>Pelican secara otomatis akan membuat struktur direktori dan berkas konfigurasi yang diperlukan.</p>
+<div class="highlight"><pre><span></span>$  ls
+
+content  Makefile  output  pelicanconf.py  publishconf.py  tasks.py
+</pre></div>
+
+
+<p>Sampailah kita ke langkah ke-enam: tambahkan berkas-berkas konfigurasi dan direktori buatan Pelican ke cabang <strong>content</strong> , <em>commit</em> perubahan dan <em>push</em> perubahan di cabang lokal ke repo di GitHub.</p>
+<div class="highlight"><pre><span></span>$ git add .
+$ git commit -m <span class="s1">&#39;initial pelican commit to content&#39;</span>
+$ git push origin content
+</pre></div>
+
+
+<h2>Membuat Post Pertama</h2>
+<p>Setelah melalui persiapan panjang, maka saatnya untuk membuat <em>post</em> pertama menggunakan <em>text editor</em> favorit: <a href="https://www.sublimetext.com/">SublimeText</a>. Anda bebas menggunakan <em>editor</em> yang Anda suka. Post saya tulis dalam format Markdown (Cek ulang: paket Markdown sudah terinstall atau belum).</p>
+<div class="highlight"><pre><span></span>$  <span class="nb">cd</span> content
+$  mkdir pages images
+$  subl first-post.md
+</pre></div>
+
+
+<p>Direktori <strong>pages</strong> untuk menyimpan halaman web statis yang jarang diedit, contohnya di halaman <em>About Us</em> atau <em>Contact Us</em>. Direktori <strong>images</strong> untuk menyimpan berkas-berkas <em>image</em> yang digunakan dalam <em>post</em> atau <em>page</em>.</p>
+<p><img alt="First Post" src="/images/first-post.png"></p>
+<p>Simpan.</p>
+<h2>Publish!</h2>
+<p>Tentu saja selanjutnya adalah memublikasikan <em>post</em> perdana saya di <a href="http://pages.github.com">GitHub Pages</a>. Begini caranya:</p>
+<ul>
+<li>Jalankan Pelican untuk membuat halaman web statis di direktori <strong>content</strong></li>
+</ul>
+<div class="highlight"><pre><span></span>$  pelican content -o output -s publishconf.py
+</pre></div>
+
+
+<ul>
+<li>Gunakan <strong>ghp-import</strong> untuk memuat isi direktori <strong>output</strong> ke cabang <strong>master</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><span class="err">$</span>  <span class="n">ghp</span><span class="o">-</span><span class="kn">import</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;Pelican site ku&quot;</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">jekyll</span> <span class="o">-</span><span class="n">b</span> <span class="n">master</span> <span class="n">output</span>
+</pre></div>
+
+
+<ul>
+<li><em>Push</em> cabang <strong>master</strong> lokal ke repo di GitHub</li>
+</ul>
+<div class="highlight"><pre><span></span>$  git push origin master
+</pre></div>
+
+
+<ul>
+<li><em>Commit</em> dan <em>push</em> ke cabang <strong>content</strong></li>
+</ul>
+<div class="highlight"><pre><span></span>$  git add content
+$  git commit -m <span class="s2">&quot;buat post pertama: Zen of Python&quot;</span>
+$  git push origin
+</pre></div>
+
+
+<h2>Enjoy Aja!</h2>
+<p>Nah, sekaran waktunya menikmati Blog baru. Buka browser </p>
+<div class="highlight"><pre><span></span><span class="c">https://username.github.io</span>
+</pre></div>
+
+
+<p><img alt="My First Post View" src="/images/first-post-view.png"></p>
+<p>Untuk menyunting atau membuat <em>post</em>, ulangi langkah-langkah pembuatan <em>post</em> serta <em>publish</em> di atas. Selamat blogging.</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/menghitung-pi.html" rel="bookmark"
+                           title="Permalink to Menghitung Pi">Menghitung Pi</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-02-02T06:54:00+08:00">
+                Published: Sun 02 February 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/msiahaan.html">msiahaan</a>
+        </address>
+<p>In <a href="/category/python.html">Python</a>.</p>
+<p>tags: <a href="/tag/python.html">python</a> </p>
+</footer><!-- /.post-info -->                <p>Wah, lama tidak menggunakan Python, otak terasa buntu. Soal yang perlu dipecahkan sederhana: hitunglah <em>Pi</em> menggunakan <a href="https://en.wikipedia.org/wiki/Wallis_product">Wallis Formula</a>setelah 1 jam mencoba, maka saya menemukan potongan kode yang saya rasa betul:</p>
+<div class="highlight"><pre><span></span><span class="err">In [50]: pi = 2 * reduce(lambda x,y: x*y, [(4.0*i**2)/(4.0*i**2-1) for …</span></pre></div>
+                <a class="readmore" href="/menghitung-pi.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/solusi-dengan-python-cepat-mudah.html" rel="bookmark"
+                           title="Permalink to Solusi dengan Python, Cepat Mudah Membuat CSV: modul CSV">Solusi dengan Python, Cepat Mudah Membuat CSV: modul CSV</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-01-19T15:41:00+08:00">
+                Published: Wed 19 January 2011
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/msiahaan.html">msiahaan</a>
+        </address>
+<p>In <a href="/category/python.html">Python</a>.</p>
+<p>tags: <a href="/tag/python.html">python</a> </p>
+</footer><!-- /.post-info -->                <p>Salah satu kelebihkan python yang sangat saya sukai adalah python memiliki koleksi modul yang lengkap dan mencakup berbagai jenis tugas sehingga saya dapat dengan cepat mencari solusi dari  permasalahan yang ada.</p>
+<p>Contohnya kemarin akuntan kantor bingung karena dia diminta oleh bank untuk mensubmit file csv yang berisikan data-data untuk transfer …</p>
+                <a class="readmore" href="/solusi-dengan-python-cepat-mudah.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/aplikasi-ping-me.html" rel="bookmark"
+                           title="Permalink to Aplikasi: Ping Me!">Aplikasi: Ping Me!</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2010-09-01T04:33:00+08:00">
+                Published: Wed 01 September 2010
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/msiahaan.html">msiahaan</a>
+        </address>
+<p>In <a href="/category/python.html">Python</a>.</p>
+<p>tags: <a href="/tag/belajar.html">belajar</a> <a href="/tag/aplikasi.html">aplikasi</a> <a href="/tag/python.html">python</a> </p>
+</footer><!-- /.post-info -->                <p>Saya sering mengalami koneksi internet dengan Speedy kurang stabil, sering putus. Browsing di internet banyak yang menuliskan bahwa koneksi internet dapat dibuat lebih stabil dengan melakukan ping terus-menerus ke server tertentu yang stabil. Caranya misalnya dituliskan di blog <a href="http://ariawijaya.com/2009/09/22/koneksi-internet-kurang-stabil-di-%E2%80%98ping%E2%80%99-aja/">Ariawijaya</a>.</p>
+<p>Tapi, saya orang yang malas untuk mengetikkan perintah di command prompt …</p>
+                <a class="readmore" href="/aplikasi-ping-me.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
