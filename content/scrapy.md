@@ -91,5 +91,5 @@ for image_url in images:
 
 Selesai. Happy scraping
 
-[inspect_1]: {static}/images/inspect_1.png
-[inspect_2]: {static}/images/inspect_2.png
+[inspect_1]: {static}/images/inspect_1s.png
+[inspect_2]: {static}/images/inspect_2s.png
