@@ -1,62 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE-edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-			<meta name="author" content="msiahaan" />
-		<title>Mengganti Template Blog  - Bangmico Python Blog
-</title>
-		<link rel="stylesheet" type="text/css" href="/theme/css/style.min.css">
-		<script src="/theme/js/menu.js"></script>
-	</head>
-	<body>
-		<nav class="navbar is-info" role="navigation" aria-label="main navigation">
-				<div class="navbar-brand">
-						<a class="navbar-item" href="">
-							<img src="/theme/images/buruma_logo.png" width="112" height="28">
-						</a>
-					<a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarMain">
-						<span aria-hidden="true"></span>
-						<span aria-hidden="true"></span>
-						<span aria-hidden="true"></span>
-					</a>
-				</div>
-				<div id="navbarMain" class="navbar-menu">
-					<div class="navbar-start">
-					<div class="navbar-item has-dropdown is-hoverable">
-						<a class="navbar-link" href="/categories">
-Categories						</a>
-						<div class="navbar-dropdown">
-							<a class="navbar-item" href="/category/python.html">
-								Python
-							</a>
-						</div>
-					</div>
-				</div>
-				<div class="navbar-end">
-					<div class="navbar-item">
-						<div class="buttons">
-						</div>
-					</div>
-				</div>
-			</div>
-			</nav>
-		<section class="section">
-			<div class="container">
-<article class="message is-info">
-	<div class="message-header">
-		Mengganti Template Blog
-	</div>
-	<div class="message-body has-text-dark">
-		<p>Dalam membuat <em>blog</em>, sebagai blogger saya ingin menggunakan template yang berbeda untuk <em>blog</em> saya.</p>
+<head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title>Mengganti Template Blog</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Bangmico Python Blog Atom Feed" />
+        <meta name="description" content="Dalam membuat blog, sebagai blogger saya ingin menggunakan template yang berbeda untuk blog saya. Pelican menyediakan beberapa template yang siap..." />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Bangmico Python Blog</a></h1>
+                <nav><ul>
+                    <li><a href="/pages/tentang-saya.html">Tentang Saya</a></li>
+                    <li class="active"><a href="/category/python.html">Python</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/mengganti-template-blog.html" rel="bookmark"
+           title="Permalink to Mengganti Template Blog">Mengganti Template Blog</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2020-05-20T15:42:00+08:00">
+                Published: Wed 20 May 2020
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/msiahaan.html">msiahaan</a>
+        </address>
+<p>In <a href="/category/python.html">Python</a>.</p>
+
+</footer><!-- /.post-info -->      <p>Dalam membuat <em>blog</em>, sebagai blogger saya ingin menggunakan template yang berbeda untuk <em>blog</em> saya.</p>
 <p>Pelican menyediakan beberapa template yang siap untuk digunakan. Koleksi template yang tersedia untuk Pelican dapat ditemukan di <a href="http://pelicanthemes.com">Pelican Themes</a>. Tersedia 127 template yang sedia untuk digunakan.</p>
 <h2>Clone Template Repository</h2>
 <p>Mula-mula saya me-download koleksi template Pelican dari repositori dengan cara melakukan <em>clone</em> repositori <a href="https://github.com/getpelican/pelican-plugins">Pelican Themes GitHub</a>. Template saya letakkan di /home/micosiahaan/staticwebsite/websites</p>
 <p>Saya pindah ke direktori /home/micosiahaan/staticwebsite/websites</p>
 <div class="highlight"><pre><span></span><code>$  git clone https://github.com/getpelican/pelican-plugins.git pelican-themes
 </code></pre></div>
-
 
 <p>Maka di direktori /home/micosiahaan/staticwebsite/websites akan terbentuk direktori pelican-themes. Direktori pelican-themes berisikan direktori-direktori yang berisikan template.</p>
 <p>Kemudian pindah ke direktori yang berisikan projek <em>blog</em>. </p>
@@ -66,32 +52,44 @@ Categories						</a>
 $  ln -s home/micosiahaan/staticwebsite/websites/pelican-themes/bootstrap2 content/themes/bootstrap2
 </code></pre></div>
 
-
 <h2>Edit pelicanconf.py</h2>
 <p>Cari baris yang berisikan variable THEME, dan isikan alamat direktori template</p>
 <div class="highlight"><pre><span></span><code><span class="err">#Use other theme</span>
 <span class="err">THEME = &#39;content/themes/bootstrap2&#39;</span>
 </code></pre></div>
 
-
 <p>Save, pelicanconf.py dan <em>VOILA!</em> template yang baru siap digunakan</p>
-	</div>
-</article>
-			</div>
-		</section>
-		<footer class="footer">
-			<div class="container has-text-centered">
-				<div class="columns">
-					<div class="column">
-							<p>Website generated with <a href="https://getpelican.com">Pelican</a>. <a href="https://github.com/ivanhercaz/buruma">Buruma</a> theme by <a href="https://ivanhercaz.com">Ivanhercaz</a></p>
-						<p><a href="https://bulma.io">
-							<img src="/theme/images/made_with_bulma.png" alt="Made with Bulma" width="128" height="24">
-						</a></p>
-					</div>
-					<div class="column">
-							<p>All rights reserved © msiahaan</p>
-				</div>
-			</div>
-		</footer>
-	</body>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="https://twitter.com/bangmico">Twitter</a></li>
+                            <li><a href="https://facebook.com/mico.siahaan">Facebook</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
 </html>

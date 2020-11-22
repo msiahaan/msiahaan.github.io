@@ -1,5 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Bangmico Python Blog</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2020-05-20T15:42:00+08:00</updated><entry><title>Mengganti Template Blog</title><link href="/mengganti-template-blog.html" rel="alternate"></link><published>2020-05-20T15:42:00+08:00</published><updated>2020-05-20T15:42:00+08:00</updated><author><name>msiahaan</name></author><id>tag:None,2020-05-20:/mengganti-template-blog.html</id><summary type="html">&lt;p&gt;Dalam membuat &lt;em&gt;blog&lt;/em&gt;, sebagai blogger saya ingin menggunakan template yang berbeda untuk &lt;em&gt;blog&lt;/em&gt; saya.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Bangmico Python Blog</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2020-11-22T20:43:00+08:00</updated><entry><title>Belajar Web Scraping</title><link href="/belajar-web-scraping.html" rel="alternate"></link><published>2020-11-22T20:43:00+08:00</published><updated>2020-11-22T20:43:00+08:00</updated><author><name>msiahaan</name></author><id>tag:None,2020-11-22:/belajar-web-scraping.html</id><summary type="html">&lt;p&gt;Beberapa bulan ini saya sedang belajar ketrampilan menggunakan Python untuk &lt;em&gt;Data Science&lt;/em&gt;. Salah satu ketrampilan yang diperlukan oleh seorang &lt;em&gt;Data Scientist&lt;/em&gt; adalah mengumpulkan data (&lt;em&gt;data extraction&lt;/em&gt;). Salah satu sumber data adalah: internet (tentu saja!). Salah satu teknik mengumpulkan data dari internet adalah dengan melakukan &lt;em&gt;web scraping&lt;/em&gt;. Kita melakukan &lt;em&gt;scaping&lt;/em&gt; untuk …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Beberapa bulan ini saya sedang belajar ketrampilan menggunakan Python untuk &lt;em&gt;Data Science&lt;/em&gt;. Salah satu ketrampilan yang diperlukan oleh seorang &lt;em&gt;Data Scientist&lt;/em&gt; adalah mengumpulkan data (&lt;em&gt;data extraction&lt;/em&gt;). Salah satu sumber data adalah: internet (tentu saja!). Salah satu teknik mengumpulkan data dari internet adalah dengan melakukan &lt;em&gt;web scraping&lt;/em&gt;. Kita melakukan &lt;em&gt;scaping&lt;/em&gt; untuk mengumpulkan data yang kita perlukan daris sebuah halaman web.&lt;/p&gt;
+&lt;p&gt;Kepustakaan yang saya pilih untuk melakukan &lt;em&gt;scraping&lt;/em&gt; adalah &lt;a href="https://scrapy.org/"&gt;Scrapy&lt;/a&gt;. Tulisan ini merupakan dokumentasi usaha pertama saya melakukan &lt;em&gt;scaping&lt;/em&gt;.  Tujuan saya melakukan &lt;em&gt;scraping&lt;/em&gt; adalah mengumpulkan foto produk dari sebuah website. Disclaimer: saya dalah distributor dari &lt;em&gt;brand&lt;/em&gt; tersebut dan saya memerlukan foto produk untuk ditampilkan di media sosial yang saya gunakan untuk memasarkan produk tersebut.&lt;/p&gt;
+&lt;h2&gt;Cek Struktur atau Elemen dari Halaman Web&lt;/h2&gt;
+&lt;p&gt;Sebelum melakukan &lt;em&gt;scraping&lt;/em&gt; adalah perlu kita cek dulu struktur atau elemen-elemen yang ada dalam halaman web. Caranya dengan menggunakan &lt;em&gt;tool&lt;/em&gt; yang sudah disediakan mayoritas  &lt;em&gt;web browser&lt;/em&gt; modern: "View Source" atau "Inspect". Jika menggunakan Google Chrome seperti saya, arahkan &lt;em&gt;cursor&lt;/em&gt; ke arah bagian yang akan di "scrap" kemudian gunakan klik-kanan &lt;em&gt;mouse&lt;/em&gt; dan pilih &lt;em&gt;Inspect&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Inspect - Klik Kanan Mouse" src="/images/inspect_1.png"&gt;&lt;/p&gt;
+&lt;p&gt;Maka browser akan menampilkan &lt;em&gt;side bar&lt;/em&gt; yang menampikan elemen-elemen serta kode HTML dari halamn web tersebut. Untuk halaman web ini, foto  produk berada dalam tag &lt;span class = "image"&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Inspect - Inspect Bar" src="/images/inspect_2.png"&gt;&lt;/p&gt;
+&lt;h2&gt;Membuat Script&lt;/h2&gt;
+&lt;p&gt;Pertama, kita perlu import modul-modul yang diperlukan:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;scrapy&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Selector&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;requests&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;re&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Selanjutnya kita muat halaman web yang akan di-scrap dan buat instan &lt;em&gt;Selector&lt;/em&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;page&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;requests&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;https://www.youngliving.com/en_US/products/c/essential-oil-products/blends&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;content&lt;/span&gt;
+&lt;span class="n"&gt;sel&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Selector&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;page&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Setelah itu, ekstrak bagian dari halaman yang memuat alamat dari foto yang akan di download menggunakan xpath yang sesuai dengan inspeksi kita di atas:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;x_path&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;//a[@class=&amp;quot;product&amp;quot;]/span[@class=&amp;quot;image&amp;quot;]&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;images_list&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sel&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;xpath&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x_path&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;extract&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Akan tetapi sayangnya, hasil esktrak masih "mentah" &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;span&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;image&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;style&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;background-image: url(https://static.youngliving.com/productimages/large/3080.jpg)&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+                &lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;span&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Untuk mendapatkan alamat/url dari foto, saya menggunakan regex untuk "membersihkan" alamat yang saya perlukan&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;images&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;images_list&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;re&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;search&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;https.*.jpg&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;images&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;group&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Alamat/url foto-foto saya masukkan ke dalam &lt;em&gt;list&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Terakhir, menggunakan alamat yang sudah dibersihkan, saya menggunakan &lt;em&gt;requests&lt;/em&gt; untuk mendownload foto ke dalam hard disk saya:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;## Importing Necessary Modules&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;shutil&lt;/span&gt; &lt;span class="c1"&gt;# to save it locally&lt;/span&gt;
+
+&lt;span class="c1"&gt;## Set up the image URL and filename&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;image_url&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;images&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;filename&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;image_url&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+    &lt;span class="c1"&gt;# Open the url image, set stream to True, this will return the stream content.&lt;/span&gt;
+    &lt;span class="n"&gt;r&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;requests&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;image_url&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;stream&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="c1"&gt;# Check if the image was retrieved successfully&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;status_code&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="c1"&gt;# Set decode_content value to True, otherwise the downloaded image file&amp;#39;s size will be zero.&lt;/span&gt;
+        &lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;raw&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;decode_content&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;
+
+         &lt;span class="c1"&gt;# Open a local file with wb ( write binary ) permission.&lt;/span&gt;
+        &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;wb&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;shutil&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;copyfileobj&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;raw&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+        &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Image sucessfully Downloaded: &amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Image Couldn&lt;/span&gt;&lt;span class="se"&gt;\&amp;#39;&lt;/span&gt;&lt;span class="s1"&gt;t be retreived&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Selesai. Happy scraping&lt;/p&gt;</content><category term="Python"></category></entry><entry><title>Mengganti Template Blog</title><link href="/mengganti-template-blog.html" rel="alternate"></link><published>2020-05-20T15:42:00+08:00</published><updated>2020-05-20T15:42:00+08:00</updated><author><name>msiahaan</name></author><id>tag:None,2020-05-20:/mengganti-template-blog.html</id><summary type="html">&lt;p&gt;Dalam membuat &lt;em&gt;blog&lt;/em&gt;, sebagai blogger saya ingin menggunakan template yang berbeda untuk &lt;em&gt;blog&lt;/em&gt; saya.&lt;/p&gt;
 &lt;p&gt;Pelican menyediakan beberapa template yang siap untuk digunakan. Koleksi template yang tersedia untuk Pelican dapat ditemukan di &lt;a href="http://pelicanthemes.com"&gt;Pelican Themes&lt;/a&gt;. Tersedia 127 template yang sedia untuk digunakan.&lt;/p&gt;
 &lt;h2&gt;Clone Template Repository&lt;/h2&gt;
 &lt;p&gt;Mula-mula saya me-download koleksi template Pelican dari …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Dalam membuat &lt;em&gt;blog&lt;/em&gt;, sebagai blogger saya ingin menggunakan template yang berbeda untuk &lt;em&gt;blog&lt;/em&gt; saya.&lt;/p&gt;
@@ -10,7 +72,6 @@
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$  git clone https://github.com/getpelican/pelican-plugins.git pelican-themes
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Maka di direktori /home/micosiahaan/staticwebsite/websites akan terbentuk direktori pelican-themes. Direktori pelican-themes berisikan direktori-direktori yang berisikan template.&lt;/p&gt;
 &lt;p&gt;Kemudian pindah ke direktori yang berisikan projek &lt;em&gt;blog&lt;/em&gt;. &lt;/p&gt;
 &lt;h2&gt;Membuat Link ke Direktori Template&lt;/h2&gt;
@@ -19,23 +80,19 @@
 $  ln -s home/micosiahaan/staticwebsite/websites/pelican-themes/bootstrap2 content/themes/bootstrap2
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h2&gt;Edit pelicanconf.py&lt;/h2&gt;
 &lt;p&gt;Cari baris yang berisikan variable THEME, dan isikan alamat direktori template&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;#Use other theme&lt;/span&gt;
 &lt;span class="err"&gt;THEME = &amp;#39;content/themes/bootstrap2&amp;#39;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Save, pelicanconf.py dan &lt;em&gt;VOILA!&lt;/em&gt; template yang baru siap digunakan&lt;/p&gt;</content><category term="Python"></category></entry><entry><title>Sesi Sharing PPKBI - Pemrograman Python</title><link href="/sesi-sharing-ppkbi-pemrograman-python.html" rel="alternate"></link><published>2020-05-16T10:53:00+08:00</published><updated>2020-05-16T10:53:00+08:00</updated><author><name>msiahaan</name></author><id>tag:None,2020-05-16:/sesi-sharing-ppkbi-pemrograman-python.html</id><summary type="html">&lt;p&gt;Tadi malam, saya memmberikan pengenalan pemrograman Python kepada kaum Bapak Gereja Kristen Berbahasa Indonesia (GKBI) Kuala Lumpur. Demo &lt;em&gt;coding&lt;/em&gt; menggunakan &lt;em&gt;Jupyter Notebook&lt;/em&gt;. Notebook kemudian saya &lt;em&gt;Save As&lt;/em&gt; sebagai file &lt;em&gt;markdown&lt;/em&gt; sehingga mudah untuk dikonversi menjadi blog.&lt;/p&gt;
 &lt;h1&gt;Mem-print output&lt;/h1&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Selamat pagi!&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;Selamat pagi!&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h1&gt;Menanyakan Input&lt;/h1&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;nama&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;input&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Siapa nama Anda …&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;Tadi malam, saya memmberikan pengenalan pemrograman Python kepada kaum Bapak Gereja Kristen Berbahasa Indonesia (GKBI) Kuala Lumpur. Demo &lt;em&gt;coding&lt;/em&gt; menggunakan &lt;em&gt;Jupyter Notebook&lt;/em&gt;. Notebook kemudian saya &lt;em&gt;Save As&lt;/em&gt; sebagai file &lt;em&gt;markdown&lt;/em&gt; sehingga mudah untuk dikonversi menjadi blog.&lt;/p&gt;
@@ -43,21 +100,17 @@ $  ln -s home/micosiahaan/staticwebsite/websites/pelican-themes/bootstrap2 conte
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Selamat pagi!&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;Selamat pagi!&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h1&gt;Menanyakan Input&lt;/h1&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;nama&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;input&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Siapa nama Anda? &amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Nama Anda &lt;/span&gt;&lt;span class="si"&gt;{0}&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nama&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;Siapa nama Anda? Ando Silaen&lt;/span&gt;
 &lt;span class="err"&gt;Nama Anda Ando Silaen&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h1&gt;Variabel&lt;/h1&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;nama&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Mico Siahaan&amp;#39;&lt;/span&gt; &lt;span class="c1"&gt;# string&lt;/span&gt;
@@ -75,7 +128,6 @@ $  ln -s home/micosiahaan/staticwebsite/websites/pelican-themes/bootstrap2 conte
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;daftar_kata&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;Mico Siahaan&lt;/span&gt;
 &lt;span class="err"&gt;2&lt;/span&gt;
 &lt;span class="err"&gt;0.05&lt;/span&gt;
@@ -83,7 +135,6 @@ $  ln -s home/micosiahaan/staticwebsite/websites/pelican-themes/bootstrap2 conte
 &lt;span class="err"&gt;(1, 5, 6, 8, 10)&lt;/span&gt;
 &lt;span class="err"&gt;{&amp;#39;tabo&amp;#39;: &amp;#39;enak&amp;#39;, &amp;#39;mangan&amp;#39;: &amp;#39;makan&amp;#39;, &amp;#39;biang&amp;#39;: &amp;#39;anjing&amp;#39;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h1&gt;Angka/Numbers&lt;/h1&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;harga&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1000&lt;/span&gt;
@@ -93,10 +144,8 @@ $  ln -s home/micosiahaan/staticwebsite/websites/pelican-themes/bootstrap2 conte
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Jumlah yang perlu dibayar &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;dibayar&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;Jumlah yang perlu dibayar 900.0&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;pokok&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1000&lt;/span&gt;
 &lt;span class="n"&gt;bunga_pertahun&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;0.04&lt;/span&gt;
@@ -105,10 +154,8 @@ $  ln -s home/micosiahaan/staticwebsite/websites/pelican-themes/bootstrap2 conte
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Jumlah dibayar setelah 3 tahun &lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;dibayar&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;Jumlah dibayar setelah 3 tahun 1124.864&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -116,13 +163,11 @@ $  ln -s home/micosiahaan/staticwebsite/websites/pelican-themes/bootstrap2 conte
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;16.666666666666668&lt;/span&gt;
 &lt;span class="err"&gt;4&lt;/span&gt;
 &lt;span class="err"&gt;106&lt;/span&gt;
 &lt;span class="err"&gt;94&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h1&gt;Strings&lt;/h1&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;nama&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Mico &amp;#39;&lt;/span&gt;
@@ -132,11 +177,9 @@ $  ln -s home/micosiahaan/staticwebsite/websites/pelican-themes/bootstrap2 conte
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nama&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;Mico Siahaan &lt;/span&gt;
 &lt;span class="err"&gt;Mico Mico Mico&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h1&gt;List&lt;/h1&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;list_anak&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Mathias&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Malakhias&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
@@ -147,11 +190,9 @@ $  ln -s home/micosiahaan/staticwebsite/websites/pelican-themes/bootstrap2 conte
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;list_anak_anak&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[&amp;#39;Mathias&amp;#39;, &amp;#39;Malakhias&amp;#39;, &amp;#39;Jojo&amp;#39;, &amp;#39;Ivana&amp;#39;]&lt;/span&gt;
 &lt;span class="k"&gt;[&amp;#39;Mathias&amp;#39;, &amp;#39;Malakhias&amp;#39;, &amp;#39;Jonathan&amp;#39;, &amp;#39;Ivana&amp;#39;]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;anak_sulung&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;list_anak&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;anak_sulung&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -159,11 +200,9 @@ $  ln -s home/micosiahaan/staticwebsite/websites/pelican-themes/bootstrap2 conte
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;anak_kandung&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;Mathias&lt;/span&gt;
 &lt;span class="err"&gt;[&amp;#39;Mathias&amp;#39;, &amp;#39;Malakhias&amp;#39;]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h1&gt;Tuples&lt;/h1&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;tuple_anak&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Mathias&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Malakhias&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -173,7 +212,6 @@ $  ln -s home/micosiahaan/staticwebsite/websites/pelican-themes/bootstrap2 conte
 &lt;span class="n"&gt;tuple_anak_anak&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Jonathan&amp;#39;&lt;/span&gt;
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tuple_anak_anak&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Mathias&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Malakhias&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Jojo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Ivana&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
@@ -193,7 +231,6 @@ $  ln -s home/micosiahaan/staticwebsite/websites/pelican-themes/bootstrap2 conte
 &lt;span class="n"&gt;TypeError&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;tuple&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;object&lt;/span&gt; &lt;span class="n"&gt;does&lt;/span&gt; &lt;span class="k"&gt;not&lt;/span&gt; &lt;span class="n"&gt;support&lt;/span&gt; &lt;span class="n"&gt;item&lt;/span&gt; &lt;span class="k"&gt;assignment&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h1&gt;Dictionary&lt;/h1&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;dict_batak&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;mangan&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;makan&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;tabo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;enak&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;jabu&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;rumah&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dict_batak&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;jabu&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
@@ -204,7 +241,6 @@ $  ln -s home/micosiahaan/staticwebsite/websites/pelican-themes/bootstrap2 conte
 &lt;span class="n"&gt;dict_batak&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;tabo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;lezat&amp;#39;&lt;/span&gt;
 &lt;span class="n"&gt;dict_batak&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;rumah&lt;/span&gt;
 &lt;span class="n"&gt;dict_keys&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;mangan&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;tabo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;jabu&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
@@ -217,7 +253,6 @@ $  ln -s home/micosiahaan/staticwebsite/websites/pelican-themes/bootstrap2 conte
 &lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;mangan&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;makan&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;tabo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;lezat&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;jabu&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;rumah&amp;#39;&lt;/span&gt;&lt;span class="err"&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h1&gt;Set&lt;/h1&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;list_buah&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;apel&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;jeruk&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;semangka&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;jeruk&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;span class="n"&gt;set_buah&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;apel&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;jeruk&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;semangka&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;jeruk&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
@@ -226,16 +261,13 @@ $  ln -s home/micosiahaan/staticwebsite/websites/pelican-themes/bootstrap2 conte
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;set_buah&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[&amp;#39;apel&amp;#39;, &amp;#39;jeruk&amp;#39;, &amp;#39;semangka&amp;#39;, &amp;#39;jeruk&amp;#39;]&lt;/span&gt;
 &lt;span class="na"&gt;{&amp;#39;jeruk&amp;#39;, &amp;#39;semangka&amp;#39;, &amp;#39;apel&amp;#39;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;buah_favorit&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;set_buah&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;buah_favorit&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;---------------------------------------------------------------------------&lt;/span&gt;
 
@@ -249,30 +281,25 @@ $  ln -s home/micosiahaan/staticwebsite/websites/pelican-themes/bootstrap2 conte
 &lt;span class="n"&gt;TypeError&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;set&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;object&lt;/span&gt; &lt;span class="n"&gt;does&lt;/span&gt; &lt;span class="k"&gt;not&lt;/span&gt; &lt;span class="n"&gt;support&lt;/span&gt; &lt;span class="n"&gt;indexing&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h1&gt;For&lt;/h1&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;list_angka&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;angka&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;list_angka&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;angka&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;end&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39; &amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;1 2 3 4 5 6&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;tuple_anak_anak&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Mathias&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Malakhias&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Jonathan&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Ivana&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;anak&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;tuple_anak_anak&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Nama anak: &lt;/span&gt;&lt;span class="si"&gt;{0}&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;anak&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;Nama anak: Mathias&lt;/span&gt;
 &lt;span class="err"&gt;Nama anak: Malakhias&lt;/span&gt;
 &lt;span class="err"&gt;Nama anak: Jonathan&lt;/span&gt;
 &lt;span class="err"&gt;Nama anak: Ivana&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;list_angka&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 
@@ -281,10 +308,8 @@ $  ln -s home/micosiahaan/staticwebsite/websites/pelican-themes/bootstrap2 conte
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;list_kuadrat&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;[1, 4, 9, 16, 25, 36]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h1&gt;While&lt;/h1&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;angka_awal&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
@@ -294,7 +319,6 @@ $  ln -s home/micosiahaan/staticwebsite/websites/pelican-themes/bootstrap2 conte
     &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Angka: &lt;/span&gt;&lt;span class="si"&gt;{0}&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;angka&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
     &lt;span class="n"&gt;angka&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;angka&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;Angka&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
 &lt;span class="n"&gt;Angka&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
@@ -308,7 +332,6 @@ $  ln -s home/micosiahaan/staticwebsite/websites/pelican-themes/bootstrap2 conte
 &lt;span class="n"&gt;Angka&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;9&lt;/span&gt;
 &lt;span class="n"&gt;Angka&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h1&gt;Function&lt;/h1&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;print_nama&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nama&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -326,7 +349,6 @@ $  ln -s home/micosiahaan/staticwebsite/websites/pelican-themes/bootstrap2 conte
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;luas_kotak&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sisi&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;Nama&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Ando&lt;/span&gt; &lt;span class="n"&gt;Silaen&lt;/span&gt;
 &lt;span class="n"&gt;Selamat&lt;/span&gt; &lt;span class="n"&gt;pagi&lt;/span&gt; &lt;span class="n"&gt;Ando&lt;/span&gt; &lt;span class="n"&gt;Silaen&lt;/span&gt;
 &lt;span class="n"&gt;Sudah&lt;/span&gt; &lt;span class="n"&gt;makankah&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt;
@@ -334,7 +356,6 @@ $  ln -s home/micosiahaan/staticwebsite/websites/pelican-themes/bootstrap2 conte
 &lt;span class="mi"&gt;8&lt;/span&gt;
 &lt;span class="n"&gt;None&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;math&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;pi&lt;/span&gt;
 
@@ -353,11 +374,9 @@ $  ln -s home/micosiahaan/staticwebsite/websites/pelican-themes/bootstrap2 conte
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Luas lingkaran (cm2): &lt;/span&gt;&lt;span class="si"&gt;{0}&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;luas&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;Radius lingkaran (cm): 5&lt;/span&gt;
 &lt;span class="err"&gt;Luas lingkaran (cm2): 78.53981633974483&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;help&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;luas_lingkaran&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="c1"&gt;#help(print)&lt;/span&gt;
@@ -367,7 +386,6 @@ $  ln -s home/micosiahaan/staticwebsite/websites/pelican-themes/bootstrap2 conte
 
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;math&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;factorial&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;Help&lt;/span&gt; &lt;span class="k"&gt;on&lt;/span&gt; &lt;span class="k"&gt;function&lt;/span&gt; &lt;span class="n"&gt;luas_lingkaran&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;module&lt;/span&gt; &lt;span class="n"&gt;__main__&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
 
@@ -380,7 +398,6 @@ $  ln -s home/micosiahaan/staticwebsite/websites/pelican-themes/bootstrap2 conte
 
 &lt;span class="mi"&gt;2432902008176640000&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h1&gt;Class&lt;/h1&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Anak&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
@@ -411,7 +428,6 @@ $  ln -s home/micosiahaan/staticwebsite/websites/pelican-themes/bootstrap2 conte
 
 &lt;span class="n"&gt;help&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Anak&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;Mathias&lt;/span&gt; &lt;span class="n"&gt;Siahaan&lt;/span&gt;
 &lt;span class="n"&gt;Help&lt;/span&gt; &lt;span class="k"&gt;on&lt;/span&gt; &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="n"&gt;Anak&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;module&lt;/span&gt; &lt;span class="n"&gt;__main__&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
@@ -446,7 +462,6 @@ $  ln -s home/micosiahaan/staticwebsite/websites/pelican-themes/bootstrap2 conte
  &lt;span class="o"&gt;|&lt;/span&gt;      &lt;span class="n"&gt;list&lt;/span&gt; &lt;span class="k"&gt;of&lt;/span&gt; &lt;span class="n"&gt;weak&lt;/span&gt; &lt;span class="k"&gt;references&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="k"&gt;object&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="k"&gt;defined&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h1&gt;String Methods&lt;/h1&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;nama&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;mico siahaan&amp;#39;&lt;/span&gt;
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nama&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;capitalize&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
@@ -457,13 +472,11 @@ $  ln -s home/micosiahaan/staticwebsite/websites/pelican-themes/bootstrap2 conte
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;list_char&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;Mico siahaan&lt;/span&gt;
 &lt;span class="err"&gt;Mico Siahaan&lt;/span&gt;
 &lt;span class="err"&gt;MICO SIAHAAN&lt;/span&gt;
 &lt;span class="err"&gt;[&amp;#39;mico&amp;#39;, &amp;#39;siahaan&amp;#39;]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Nice to read [https://docs.python.org/3/library/stdtypes.html#string-methods]&lt;/p&gt;
 &lt;h1&gt;Errors/Exceptions&lt;/h1&gt;
@@ -472,10 +485,8 @@ $  ln -s home/micosiahaan/staticwebsite/websites/pelican-themes/bootstrap2 conte
 &lt;span class="n"&gt;list_anak&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;[&amp;#39;Mathias&amp;#39;, &amp;#39;Jojo&amp;#39;]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;int_utang&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;input&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Utang pokok: &amp;#39;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;span class="n"&gt;float_bunga&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mf"&gt;0.03&lt;/span&gt;
@@ -483,11 +494,9 @@ $  ln -s home/micosiahaan/staticwebsite/websites/pelican-themes/bootstrap2 conte
 &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Dibayar: &lt;/span&gt;&lt;span class="si"&gt;{0}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;float_bayar&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;Utang pokok: 1000&lt;/span&gt;
 &lt;span class="c"&gt;Dibayar: 1060.8999999999999&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Anak&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;nama&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -499,17 +508,14 @@ $  ln -s home/micosiahaan/staticwebsite/websites/pelican-themes/bootstrap2 conte
 &lt;span class="n"&gt;mathias&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nama&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;&amp;#39;Mathias Siahaan&amp;#39;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;list_angka&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;angka&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;list_angka&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;plus_one&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;angka&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
     &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;plus_one&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;1&lt;/span&gt;
 &lt;span class="err"&gt;2&lt;/span&gt;
@@ -713,7 +719,6 @@ $  ln -s home/micosiahaan/staticwebsite/websites/pelican-themes/bootstrap2 conte
 &lt;span class="err"&gt;200&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;angka&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;
 &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;angka&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Lebih dari 5&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -721,14 +726,11 @@ $  ln -s home/micosiahaan/staticwebsite/websites/pelican-themes/bootstrap2 conte
     &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Kurang dari 5&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;Lebih dari 5&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Happy Pythoning!&lt;/p&gt;</content><category term="Python"></category></entry><entry><title>Membuat Blog di GitHub</title><link href="/membuat-blog-di-github.html" rel="alternate"></link><published>2020-05-01T19:57:00+08:00</published><updated>2020-05-01T19:57:00+08:00</updated><author><name>msiahaan</name></author><id>tag:None,2020-05-01:/membuat-blog-di-github.html</id><summary type="html">&lt;h1&gt;Membuat Blog dengan Pelican di Github&lt;/h1&gt;
 &lt;p&gt;&lt;a href="http://github.com"&gt;GitHub&lt;/a&gt; adalah penyedia layanan bagi pemrogram untuk berkolaborasi dalam pengembangan aplikasi. Tim pemrogram dapat meletakkan kode sumber di Github dalam sebuah &lt;em&gt;repository&lt;/em&gt; dan pemrogram lain dapat berkolaborasi melalui &lt;em&gt;clone&lt;/em&gt; dari &lt;em&gt;repository&lt;/em&gt; tersebut.&lt;/p&gt;
@@ -739,7 +741,6 @@ $  ln -s home/micosiahaan/staticwebsite/websites/pelican-themes/bootstrap2 conte
 &lt;p&gt;Pertama, saya lebih suka membuat &lt;em&gt;virtual environment&lt;/em&gt; tersendiri untuk projek blog ini agar tidak bercampur dengan projek lain.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$  python -m venv websites
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h2&gt;Instalasi Pelican, Markdown dan ghp-import&lt;/h2&gt;
 &lt;p&gt;Kedua, &lt;em&gt;install&lt;/em&gt; paket yang diperlukan:&lt;/p&gt;
@@ -754,7 +755,6 @@ $  &lt;span class="nb"&gt;source&lt;/span&gt; bin/activate
 $  pip install Pelican Markdown ghp-import
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h2&gt;Membuat Repository untuk Blog di GitHub&lt;/h2&gt;
 &lt;p&gt;Nah, kini waktunya untuk membuat repository untuk projek blog. Sesuai dengan amanat &lt;a href="http://pages.github.com"&gt;GitHub Pages&lt;/a&gt; maka repository untuk GitHub Pages harus dinamai &lt;code&gt;username.github.io&lt;/code&gt;
 &lt;img alt="Create Repository" src="/images/github-pages-create.png"&gt;&lt;/p&gt;
@@ -764,12 +764,10 @@ $  pip install Pelican Markdown ghp-import
 $  &lt;span class="nb"&gt;cd&lt;/span&gt; blog
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Selanjutnya, ini tips ampuh yang dari penulis &lt;a href="https://opensource.com/article/19/5/run-your-blog-github-pages-python"&gt;Run your blog on GitHub Pages with Python&lt;/a&gt;: buat cabang terpisah untuk &lt;em&gt;bahan dasar&lt;/em&gt; dan &lt;em&gt;barang jadi&lt;/em&gt;. &lt;em&gt;Bahan dasar&lt;/em&gt; adalah berkas-berkas dalam format &lt;strong&gt;Markdown&lt;/strong&gt;, berkas-berkas konfigurasi dari Pelican. &lt;em&gt;Barang jadi&lt;/em&gt; adalah berkas-berkas untuk situs web (&lt;code&gt;*.html&lt;/code&gt;, images).&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$  git checkout -b content
 Switch to a new branch &lt;span class="s1"&gt;&amp;#39;content&amp;#39;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;&lt;strong&gt;content&lt;/strong&gt; adalah cabang tempat kerja dalam mengedit &lt;em&gt;barang mentah&lt;/em&gt; sementara &lt;em&gt;barang jadi&lt;/em&gt; halaman-halaman web akan ditempatkan di cabang &lt;strong&gt;master&lt;/strong&gt;.&lt;/p&gt;
 &lt;h2&gt;Mengkonfigurasi Pelican&lt;/h2&gt;
@@ -802,7 +800,6 @@ Switch to a new branch &lt;span class="s1"&gt;&amp;#39;content&amp;#39;&lt;/span
 &lt;span class="n"&gt;Done&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Your&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;new&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;project&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;is&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;available&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;users&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;websites&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;blog&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Beberapa hal yang perlu &lt;strong&gt;dijawab&lt;/strong&gt;:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Judul/title dari website&lt;/li&gt;
@@ -816,13 +813,11 @@ Switch to a new branch &lt;span class="s1"&gt;&amp;#39;content&amp;#39;&lt;/span
 content  Makefile  output  pelicanconf.py  publishconf.py  tasks.py
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Sampailah kita ke langkah ke-enam: tambahkan berkas-berkas konfigurasi dan direktori buatan Pelican ke cabang &lt;strong&gt;content&lt;/strong&gt; , &lt;em&gt;commit&lt;/em&gt; perubahan dan &lt;em&gt;push&lt;/em&gt; perubahan di cabang lokal ke repo di GitHub.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ git add .
 $ git commit -m &lt;span class="s1"&gt;&amp;#39;initial pelican commit to content&amp;#39;&lt;/span&gt;
 $ git push origin content
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h2&gt;Membuat Post Pertama&lt;/h2&gt;
 &lt;p&gt;Setelah melalui persiapan panjang, maka saatnya untuk membuat &lt;em&gt;post&lt;/em&gt; pertama menggunakan &lt;em&gt;text editor&lt;/em&gt; favorit: &lt;a href="https://www.sublimetext.com/"&gt;SublimeText&lt;/a&gt;. Anda bebas menggunakan &lt;em&gt;editor&lt;/em&gt; yang Anda suka. Post saya tulis dalam format Markdown (Cek ulang: paket Markdown sudah terinstall atau belum).&lt;/p&gt;
@@ -830,7 +825,6 @@ $ git push origin content
 $  mkdir pages images
 $  subl first-post.md
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Direktori &lt;strong&gt;pages&lt;/strong&gt; untuk menyimpan halaman web statis yang jarang diedit, contohnya di halaman &lt;em&gt;About Us&lt;/em&gt; atau &lt;em&gt;Contact Us&lt;/em&gt;. Direktori &lt;strong&gt;images&lt;/strong&gt; untuk menyimpan berkas-berkas &lt;em&gt;image&lt;/em&gt; yang digunakan dalam &lt;em&gt;post&lt;/em&gt; atau &lt;em&gt;page&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="First Post" src="/images/first-post.png"&gt;&lt;/p&gt;
@@ -843,20 +837,17 @@ $  subl first-post.md
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$  pelican content -o output -s publishconf.py
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;ul&gt;
 &lt;li&gt;Gunakan &lt;strong&gt;ghp-import&lt;/strong&gt; untuk memuat isi direktori &lt;strong&gt;output&lt;/strong&gt; ke cabang &lt;strong&gt;master&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;$&lt;/span&gt;  &lt;span class="n"&gt;ghp&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Pelican site ku&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;no&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;jekyll&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="n"&gt;master&lt;/span&gt; &lt;span class="n"&gt;output&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;ul&gt;
 &lt;li&gt;&lt;em&gt;Push&lt;/em&gt; cabang &lt;strong&gt;master&lt;/strong&gt; lokal ke repo di GitHub&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$  git push origin master
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;ul&gt;
 &lt;li&gt;&lt;em&gt;Commit&lt;/em&gt; dan &lt;em&gt;push&lt;/em&gt; ke cabang &lt;strong&gt;content&lt;/strong&gt;&lt;/li&gt;
@@ -866,12 +857,10 @@ $  git commit -m &lt;span class="s2"&gt;&amp;quot;buat post pertama: Zen of Pyth
 $  git push origin
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h2&gt;Enjoy Aja!&lt;/h2&gt;
 &lt;p&gt;Nah, sekaran waktunya menikmati Blog baru. Buka browser &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c"&gt;https://username.github.io&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;&lt;img alt="My First Post View" src="/images/first-post-view.png"&gt;&lt;/p&gt;
 &lt;p&gt;Untuk menyunting atau membuat &lt;em&gt;post&lt;/em&gt;, ulangi langkah-langkah pembuatan &lt;em&gt;post&lt;/em&gt; serta &lt;em&gt;publish&lt;/em&gt; di atas. Selamat blogging.&lt;/p&gt;</content><category term="Python"></category><category term="python"></category><category term="github"></category></entry><entry><title>Zen of Python</title><link href="/zen-of-python.html" rel="alternate"></link><published>2020-04-30T19:57:00+08:00</published><updated>2020-04-30T19:57:00+08:00</updated><author><name>msiahaan</name></author><id>tag:None,2020-04-30:/zen-of-python.html</id><summary type="html">&lt;h1&gt;Zen of Python&lt;/h1&gt;
@@ -915,7 +904,6 @@ $  git push origin
 &lt;span class="err"&gt;In [51]: pi&lt;/span&gt;
 &lt;span class="err"&gt;Out[51]: 3.1408069608284657&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Wah, ternyata lebih ribet dari yang saya kira pada awalnya. Namun &lt;em&gt;cool&lt;/em&gt;... kita dapat menghitung &lt;em&gt;Pi&lt;/em&gt; hanya dengan &lt;strong&gt;satu baris kode&lt;/strong&gt; yang melibatkan &lt;em&gt;fungsi built-in reduce&lt;/em&gt;, &lt;em&gt;lambda&lt;/em&gt;, serta &lt;em&gt;list comprehension&lt;/em&gt;. Yang baru saya pelajari dan gunakan adalah fungsi &lt;em&gt;reduce&lt;/em&gt;. Potongan penjelasan mengenai fungsi &lt;em&gt;reduce&lt;/em&gt; dari &lt;em&gt;help&lt;/em&gt; Python:&lt;/p&gt;
 &lt;p&gt;Apply function of two arguments cumulatively to the items of iterable, from left to right, so as to reduce the iterable to a single value. For example, reduce(lambda x, y: x+y, [1, 2, 3, 4, 5]) calculates ((((1+2)+3)+4)+5). The left argument, x, is the accumulated value and the right argument, y, is the update value from the iterable. If the optional initializer is present, it is placed before the items of the iterable in the calculation, and serves as a default when the iterable is empty. If initializer is not given and iterable contains only one item, the first item is returned.&lt;/p&gt;</content><category term="Python"></category><category term="python"></category></entry><entry><title>Solusi dengan Python, Cepat Mudah Membuat CSV: modul CSV</title><link href="/solusi-dengan-python-cepat-mudah.html" rel="alternate"></link><published>2011-01-19T15:41:00+08:00</published><updated>2011-01-19T15:41:00+08:00</updated><author><name>msiahaan</name></author><id>tag:None,2011-01-19:/solusi-dengan-python-cepat-mudah.html</id><summary type="html">&lt;p&gt;Salah satu kelebihkan python yang sangat saya sukai adalah python memiliki koleksi modul yang lengkap dan mencakup berbagai jenis tugas sehingga saya dapat dengan cepat mencari solusi dari  permasalahan yang ada.&lt;/p&gt;

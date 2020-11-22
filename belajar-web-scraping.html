@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title>Belajar Web Scraping</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Bangmico Python Blog Atom Feed" />
+        <meta name="description" content="Beberapa bulan ini saya sedang belajar ketrampilan menggunakan Python untuk Data Science. Salah satu ketrampilan yang diperlukan oleh seorang Data..." />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Bangmico Python Blog</a></h1>
+                <nav><ul>
+                    <li><a href="/pages/tentang-saya.html">Tentang Saya</a></li>
+                    <li class="active"><a href="/category/python.html">Python</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/belajar-web-scraping.html" rel="bookmark"
+           title="Permalink to Belajar Web Scraping">Belajar Web Scraping</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2020-11-22T20:43:00+08:00">
+                Published: Sun 22 November 2020
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/msiahaan.html">msiahaan</a>
+        </address>
+<p>In <a href="/category/python.html">Python</a>.</p>
+
+</footer><!-- /.post-info -->      <p>Beberapa bulan ini saya sedang belajar ketrampilan menggunakan Python untuk <em>Data Science</em>. Salah satu ketrampilan yang diperlukan oleh seorang <em>Data Scientist</em> adalah mengumpulkan data (<em>data extraction</em>). Salah satu sumber data adalah: internet (tentu saja!). Salah satu teknik mengumpulkan data dari internet adalah dengan melakukan <em>web scraping</em>. Kita melakukan <em>scaping</em> untuk mengumpulkan data yang kita perlukan daris sebuah halaman web.</p>
+<p>Kepustakaan yang saya pilih untuk melakukan <em>scraping</em> adalah <a href="https://scrapy.org/">Scrapy</a>. Tulisan ini merupakan dokumentasi usaha pertama saya melakukan <em>scaping</em>.  Tujuan saya melakukan <em>scraping</em> adalah mengumpulkan foto produk dari sebuah website. Disclaimer: saya dalah distributor dari <em>brand</em> tersebut dan saya memerlukan foto produk untuk ditampilkan di media sosial yang saya gunakan untuk memasarkan produk tersebut.</p>
+<h2>Cek Struktur atau Elemen dari Halaman Web</h2>
+<p>Sebelum melakukan <em>scraping</em> adalah perlu kita cek dulu struktur atau elemen-elemen yang ada dalam halaman web. Caranya dengan menggunakan <em>tool</em> yang sudah disediakan mayoritas  <em>web browser</em> modern: "View Source" atau "Inspect". Jika menggunakan Google Chrome seperti saya, arahkan <em>cursor</em> ke arah bagian yang akan di "scrap" kemudian gunakan klik-kanan <em>mouse</em> dan pilih <em>Inspect</em>.</p>
+<p><img alt="Inspect - Klik Kanan Mouse" src="/images/inspect_1.png"></p>
+<p>Maka browser akan menampilkan <em>side bar</em> yang menampikan elemen-elemen serta kode HTML dari halamn web tersebut. Untuk halaman web ini, foto  produk berada dalam tag <span class = "image"></span></p>
+<p><img alt="Inspect - Inspect Bar" src="/images/inspect_2.png"></p>
+<h2>Membuat Script</h2>
+<p>Pertama, kita perlu import modul-modul yang diperlukan:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">scrapy</span> <span class="kn">import</span> <span class="n">Selector</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">re</span>
+</code></pre></div>
+
+<p>Selanjutnya kita muat halaman web yang akan di-scrap dan buat instan <em>Selector</em></p>
+<div class="highlight"><pre><span></span><code><span class="n">page</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://www.youngliving.com/en_US/products/c/essential-oil-products/blends&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">content</span>
+<span class="n">sel</span> <span class="o">=</span> <span class="n">Selector</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">page</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Setelah itu, ekstrak bagian dari halaman yang memuat alamat dari foto yang akan di download menggunakan xpath yang sesuai dengan inspeksi kita di atas:</p>
+<div class="highlight"><pre><span></span><code><span class="n">x_path</span> <span class="o">=</span> <span class="s1">&#39;//a[@class=&quot;product&quot;]/span[@class=&quot;image&quot;]&#39;</span>
+<span class="n">images_list</span> <span class="o">=</span> <span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="n">x_path</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Akan tetapi sayangnya, hasil esktrak masih "mentah" </p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;image&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;background-image: url(https://static.youngliving.com/productimages/large/3080.jpg)&quot;</span><span class="p">&gt;</span>
+                <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p>Untuk mendapatkan alamat/url dari foto, saya menggunakan regex untuk "membersihkan" alamat yang saya perlukan</p>
+<div class="highlight"><pre><span></span><code><span class="n">images</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">images_list</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;https.*.jpg&quot;</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span>
+    <span class="n">images</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+</code></pre></div>
+
+<p>Alamat/url foto-foto saya masukkan ke dalam <em>list</em></p>
+<p>Terakhir, menggunakan alamat yang sudah dibersihkan, saya menggunakan <em>requests</em> untuk mendownload foto ke dalam hard disk saya:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">## Importing Necessary Modules</span>
+<span class="kn">import</span> <span class="nn">shutil</span> <span class="c1"># to save it locally</span>
+
+<span class="c1">## Set up the image URL and filename</span>
+<span class="k">for</span> <span class="n">image_url</span> <span class="ow">in</span> <span class="n">images</span><span class="p">:</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">image_url</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="c1"># Open the url image, set stream to True, this will return the stream content.</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">image_url</span><span class="p">,</span> <span class="n">stream</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Check if the image was retrieved successfully</span>
+    <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="c1"># Set decode_content value to True, otherwise the downloaded image file&#39;s size will be zero.</span>
+        <span class="n">r</span><span class="o">.</span><span class="n">raw</span><span class="o">.</span><span class="n">decode_content</span> <span class="o">=</span> <span class="kc">True</span>
+
+         <span class="c1"># Open a local file with wb ( write binary ) permission.</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">shutil</span><span class="o">.</span><span class="n">copyfileobj</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">raw</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Image sucessfully Downloaded: &#39;</span><span class="p">,</span><span class="n">filename</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Image Couldn</span><span class="se">\&#39;</span><span class="s1">t be retreived&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Selesai. Happy scraping</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="https://twitter.com/bangmico">Twitter</a></li>
+                            <li><a href="https://facebook.com/mico.siahaan">Facebook</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
