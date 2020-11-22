@@ -3,9 +3,9 @@
 &lt;p&gt;Kepustakaan yang saya pilih untuk melakukan &lt;em&gt;scraping&lt;/em&gt; adalah &lt;a href="https://scrapy.org/"&gt;Scrapy&lt;/a&gt;. Tulisan ini merupakan dokumentasi usaha pertama saya melakukan &lt;em&gt;scaping&lt;/em&gt;.  Tujuan saya melakukan &lt;em&gt;scraping&lt;/em&gt; adalah mengumpulkan foto produk dari sebuah website. Disclaimer: saya dalah distributor dari &lt;em&gt;brand&lt;/em&gt; tersebut dan saya memerlukan foto produk untuk ditampilkan di media sosial yang saya gunakan untuk memasarkan produk tersebut.&lt;/p&gt;
 &lt;h2&gt;Cek Struktur atau Elemen dari Halaman Web&lt;/h2&gt;
 &lt;p&gt;Sebelum melakukan &lt;em&gt;scraping&lt;/em&gt; adalah perlu kita cek dulu struktur atau elemen-elemen yang ada dalam halaman web. Caranya dengan menggunakan &lt;em&gt;tool&lt;/em&gt; yang sudah disediakan mayoritas  &lt;em&gt;web browser&lt;/em&gt; modern: "View Source" atau "Inspect". Jika menggunakan Google Chrome seperti saya, arahkan &lt;em&gt;cursor&lt;/em&gt; ke arah bagian yang akan di "scrap" kemudian gunakan klik-kanan &lt;em&gt;mouse&lt;/em&gt; dan pilih &lt;em&gt;Inspect&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Inspect - Klik Kanan Mouse" src="/images/inspect_1.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Inspect - Klik Kanan Mouse" src="/images/inspect_1s.png"&gt;&lt;/p&gt;
 &lt;p&gt;Maka browser akan menampilkan &lt;em&gt;side bar&lt;/em&gt; yang menampikan elemen-elemen serta kode HTML dari halamn web tersebut. Untuk halaman web ini, foto  produk berada dalam tag &lt;span class = "image"&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Inspect - Inspect Bar" src="/images/inspect_2.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Inspect - Inspect Bar" src="/images/inspect_2s.png"&gt;&lt;/p&gt;
 &lt;h2&gt;Membuat Script&lt;/h2&gt;
 &lt;p&gt;Pertama, kita perlu import modul-modul yang diperlukan:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;scrapy&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Selector&lt;/span&gt;

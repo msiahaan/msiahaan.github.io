@@ -40,9 +40,9 @@
 <p>Kepustakaan yang saya pilih untuk melakukan <em>scraping</em> adalah <a href="https://scrapy.org/">Scrapy</a>. Tulisan ini merupakan dokumentasi usaha pertama saya melakukan <em>scaping</em>.  Tujuan saya melakukan <em>scraping</em> adalah mengumpulkan foto produk dari sebuah website. Disclaimer: saya dalah distributor dari <em>brand</em> tersebut dan saya memerlukan foto produk untuk ditampilkan di media sosial yang saya gunakan untuk memasarkan produk tersebut.</p>
 <h2>Cek Struktur atau Elemen dari Halaman Web</h2>
 <p>Sebelum melakukan <em>scraping</em> adalah perlu kita cek dulu struktur atau elemen-elemen yang ada dalam halaman web. Caranya dengan menggunakan <em>tool</em> yang sudah disediakan mayoritas  <em>web browser</em> modern: "View Source" atau "Inspect". Jika menggunakan Google Chrome seperti saya, arahkan <em>cursor</em> ke arah bagian yang akan di "scrap" kemudian gunakan klik-kanan <em>mouse</em> dan pilih <em>Inspect</em>.</p>
-<p><img alt="Inspect - Klik Kanan Mouse" src="/images/inspect_1.png"></p>
+<p><img alt="Inspect - Klik Kanan Mouse" src="/images/inspect_1s.png"></p>
 <p>Maka browser akan menampilkan <em>side bar</em> yang menampikan elemen-elemen serta kode HTML dari halamn web tersebut. Untuk halaman web ini, foto  produk berada dalam tag <span class = "image"></span></p>
-<p><img alt="Inspect - Inspect Bar" src="/images/inspect_2.png"></p>
+<p><img alt="Inspect - Inspect Bar" src="/images/inspect_2s.png"></p>
 <h2>Membuat Script</h2>
 <p>Pertama, kita perlu import modul-modul yang diperlukan:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">scrapy</span> <span class="kn">import</span> <span class="n">Selector</span>
