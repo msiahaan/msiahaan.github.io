@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
         <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="generator" content="Pelican" />
         <title>Menghitung Pi</title>
         <link rel="stylesheet" href="/theme/css/main.css" />
@@ -14,6 +15,7 @@
                 <h1><a href="/">Bangmico Python Blog</a></h1>
                 <nav><ul>
                     <li><a href="/pages/tentang-saya.html">Tentang Saya</a></li>
+                    <li><a href="/category/others.html">Others</a></li>
                     <li class="active"><a href="/category/python.html">Python</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
@@ -37,9 +39,9 @@
 <p>In <a href="/category/python.html">Python</a>.</p>
 <p>tags: <a href="/tag/python.html">python</a> </p>
 </footer><!-- /.post-info -->      <p>Wah, lama tidak menggunakan Python, otak terasa buntu. Soal yang perlu dipecahkan sederhana: hitunglah <em>Pi</em> menggunakan <a href="https://en.wikipedia.org/wiki/Wallis_product">Wallis Formula</a>setelah 1 jam mencoba, maka saya menemukan potongan kode yang saya rasa betul:</p>
-<div class="highlight"><pre><span></span><code><span class="err">In [50]: pi = 2 * reduce(lambda x,y: x*y, [(4.0*i**2)/(4.0*i**2-1) for i in xrange(1,1000)])</span>
-<span class="err">In [51]: pi</span>
-<span class="err">Out[51]: 3.1408069608284657</span>
+<div class="highlight"><pre><span></span><code><span class="nv">In</span> [<span class="mi">50</span>]: <span class="nv">pi</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="nv">reduce</span><span class="ss">(</span><span class="nv">lambda</span> <span class="nv">x</span>,<span class="nv">y</span>: <span class="nv">x</span><span class="o">*</span><span class="nv">y</span>, [<span class="ss">(</span><span class="mi">4</span>.<span class="mi">0</span><span class="o">*</span><span class="nv">i</span><span class="o">**</span><span class="mi">2</span><span class="ss">)</span><span class="o">/</span><span class="ss">(</span><span class="mi">4</span>.<span class="mi">0</span><span class="o">*</span><span class="nv">i</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="ss">)</span> <span class="k">for</span> <span class="nv">i</span> <span class="nv">in</span> <span class="nv">xrange</span><span class="ss">(</span><span class="mi">1</span>,<span class="mi">1000</span><span class="ss">)</span>]<span class="ss">)</span>
+<span class="nv">In</span> [<span class="mi">51</span>]: <span class="nv">pi</span>
+<span class="nv">Out</span>[<span class="mi">51</span>]: <span class="mi">3</span>.<span class="mi">1408069608284657</span>
 </code></pre></div>
 
 <p>Wah, ternyata lebih ribet dari yang saya kira pada awalnya. Namun <em>cool</em>... kita dapat menghitung <em>Pi</em> hanya dengan <strong>satu baris kode</strong> yang melibatkan <em>fungsi built-in reduce</em>, <em>lambda</em>, serta <em>list comprehension</em>. Yang baru saya pelajari dan gunakan adalah fungsi <em>reduce</em>. Potongan penjelasan mengenai fungsi <em>reduce</em> dari <em>help</em> Python:</p>

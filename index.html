@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
         <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="generator" content="Pelican" />
         <title>Bangmico Python Blog</title>
         <link rel="stylesheet" href="/theme/css/main.css" />
@@ -13,13 +14,42 @@
                 <h1><a href="/">Bangmico Python Blog</a></h1>
                 <nav><ul>
                     <li><a href="/pages/tentang-saya.html">Tentang Saya</a></li>
+                    <li><a href="/category/others.html">Others</a></li>
                     <li><a href="/category/python.html">Python</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/belajar-web-scraping.html">Belajar Web Scraping</a></h1>
+                    <h1 class="entry-title"><a href="/happy-new-year-2022.html">Happy New Year 2022!</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2022-07-01T13:54:00+08:00">
+                Published: Fri 01 July 2022
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/mico-siahaan.html">Mico Siahaan</a>
+        </address>
+<p>In <a href="/category/others.html">Others</a>.</p>
+
+</footer><!-- /.post-info --><h1>Happy New Year 2022!</h1>
+<p>Tidak terasa sudah memasuki tahun yang baru. Dan sulah lama sekali saya tidak posting atapun update blog ini. Tahun ini, keinginan saya untuk blog ini:
+1. Implementasi Python lebih sering
+2. Lebih sering update blog ini sebagai bentuk sharing yang dipelajari</p>
+<p>Semoga terlaksana. Amin.</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/belajar-web-scraping.html" rel="bookmark"
+                           title="Permalink to Belajar Web Scraping">Belajar Web Scraping</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2020-11-22T20:43:00+08:00">
                 Published: Sun 22 November 2020
@@ -30,74 +60,10 @@
         </address>
 <p>In <a href="/category/python.html">Python</a>.</p>
 
-</footer><!-- /.post-info --><p>Beberapa bulan ini saya sedang belajar ketrampilan menggunakan Python untuk <em>Data Science</em>. Salah satu ketrampilan yang diperlukan oleh seorang <em>Data Scientist</em> adalah mengumpulkan data (<em>data extraction</em>). Salah satu sumber data adalah: internet (tentu saja!). Salah satu teknik mengumpulkan data dari internet adalah dengan melakukan <em>web scraping</em>. Kita melakukan <em>scaping</em> untuk mengumpulkan data yang kita perlukan daris sebuah halaman web.</p>
-<p>Kepustakaan yang saya pilih untuk melakukan <em>scraping</em> adalah <a href="https://scrapy.org/">Scrapy</a>. Tulisan ini merupakan dokumentasi usaha pertama saya melakukan <em>scaping</em>.  Tujuan saya melakukan <em>scraping</em> adalah mengumpulkan foto produk dari sebuah website. Disclaimer: saya dalah distributor dari <em>brand</em> tersebut dan saya memerlukan foto produk untuk ditampilkan di media sosial yang saya gunakan untuk memasarkan produk tersebut.</p>
-<h2>Cek Struktur atau Elemen dari Halaman Web</h2>
-<p>Sebelum melakukan <em>scraping</em> adalah perlu kita cek dulu struktur atau elemen-elemen yang ada dalam halaman web. Caranya dengan menggunakan <em>tool</em> yang sudah disediakan mayoritas  <em>web browser</em> modern: "View Source" atau "Inspect". Jika menggunakan Google Chrome seperti saya, arahkan <em>cursor</em> ke arah bagian yang akan di "scrap" kemudian gunakan klik-kanan <em>mouse</em> dan pilih <em>Inspect</em>.</p>
-<p><img alt="Inspect - Klik Kanan Mouse" src="/images/inspect_1s.png"></p>
-<p>Maka browser akan menampilkan <em>side bar</em> yang menampikan elemen-elemen serta kode HTML dari halamn web tersebut. Untuk halaman web ini, foto  produk berada dalam tag <span class = "image"></span></p>
-<p><img alt="Inspect - Inspect Bar" src="/images/inspect_2s.png"></p>
-<h2>Membuat Script</h2>
-<p>Pertama, kita perlu import modul-modul yang diperlukan:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">scrapy</span> <span class="kn">import</span> <span class="n">Selector</span>
-<span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">import</span> <span class="nn">re</span>
-</code></pre></div>
-
-<p>Selanjutnya kita muat halaman web yang akan di-scrap dan buat instan <em>Selector</em></p>
-<div class="highlight"><pre><span></span><code><span class="n">page</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://www.youngliving.com/en_US/products/c/essential-oil-products/blends&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">content</span>
-<span class="n">sel</span> <span class="o">=</span> <span class="n">Selector</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">page</span><span class="p">)</span>
-</code></pre></div>
-
-<p>Setelah itu, ekstrak bagian dari halaman yang memuat alamat dari foto yang akan di download menggunakan xpath yang sesuai dengan inspeksi kita di atas:</p>
-<div class="highlight"><pre><span></span><code><span class="n">x_path</span> <span class="o">=</span> <span class="s1">&#39;//a[@class=&quot;product&quot;]/span[@class=&quot;image&quot;]&#39;</span>
-<span class="n">images_list</span> <span class="o">=</span> <span class="n">sel</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="n">x_path</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
-</code></pre></div>
-
-<p>Akan tetapi sayangnya, hasil esktrak masih "mentah" </p>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;image&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;background-image: url(https://static.youngliving.com/productimages/large/3080.jpg)&quot;</span><span class="p">&gt;</span>
-                <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-</code></pre></div>
-
-<p>Untuk mendapatkan alamat/url dari foto, saya menggunakan regex untuk "membersihkan" alamat yang saya perlukan</p>
-<div class="highlight"><pre><span></span><code><span class="n">images</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">images_list</span><span class="p">:</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;https.*.jpg&quot;</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span>
-    <span class="n">images</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
-</code></pre></div>
-
-<p>Alamat/url foto-foto saya masukkan ke dalam <em>list</em></p>
-<p>Terakhir, menggunakan alamat yang sudah dibersihkan, saya menggunakan <em>requests</em> untuk mendownload foto ke dalam hard disk saya:</p>
-<div class="highlight"><pre><span></span><code><span class="c1">## Importing Necessary Modules</span>
-<span class="kn">import</span> <span class="nn">shutil</span> <span class="c1"># to save it locally</span>
-
-<span class="c1">## Set up the image URL and filename</span>
-<span class="k">for</span> <span class="n">image_url</span> <span class="ow">in</span> <span class="n">images</span><span class="p">:</span>
-    <span class="n">filename</span> <span class="o">=</span> <span class="n">image_url</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-
-    <span class="c1"># Open the url image, set stream to True, this will return the stream content.</span>
-    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">image_url</span><span class="p">,</span> <span class="n">stream</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-
-    <span class="c1"># Check if the image was retrieved successfully</span>
-    <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
-        <span class="c1"># Set decode_content value to True, otherwise the downloaded image file&#39;s size will be zero.</span>
-        <span class="n">r</span><span class="o">.</span><span class="n">raw</span><span class="o">.</span><span class="n">decode_content</span> <span class="o">=</span> <span class="kc">True</span>
-
-         <span class="c1"># Open a local file with wb ( write binary ) permission.</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-            <span class="n">shutil</span><span class="o">.</span><span class="n">copyfileobj</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">raw</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
-
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Image sucessfully Downloaded: &#39;</span><span class="p">,</span><span class="n">filename</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Image Couldn</span><span class="se">\&#39;</span><span class="s1">t be retreived&#39;</span><span class="p">)</span>
-</code></pre></div>
-
-<p>Selesai. Happy scraping</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+</footer><!-- /.post-info -->                <p>Beberapa bulan ini saya sedang belajar ketrampilan menggunakan Python untuk <em>Data Science</em>. Salah satu ketrampilan yang diperlukan oleh seorang <em>Data Scientist</em> adalah mengumpulkan data (<em>data extraction</em>). Salah satu sumber data adalah: internet (tentu saja!). Salah satu teknik mengumpulkan data dari internet adalah dengan melakukan <em>web scraping</em>. Kita melakukan <em>scaping</em> untuk …</p>
+                <a class="readmore" href="/belajar-web-scraping.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -146,7 +112,7 @@
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Selamat pagi!&#39;</span><span class="p">)</span>
 </code></pre></div>
 
-<div class="highlight"><pre><span></span><code><span class="err">Selamat pagi!</span>
+<div class="highlight"><pre><span></span><code>Selamat pagi!
 </code></pre></div>
 
 <h1>Menanyakan Input</h1>
@@ -176,39 +142,6 @@
 <p><a href="http://github.com">GitHub</a> adalah penyedia layanan bagi pemrogram untuk berkolaborasi dalam pengembangan aplikasi. Tim pemrogram dapat meletakkan kode sumber di Github dalam sebuah <em>repository</em> dan pemrogram lain dapat berkolaborasi melalui <em>clone</em> dari <em>repository</em> tersebut.</p>
 <p>Selain itu <a href="http://github.com">GitHub</a> juga menyediakan layanan untuk membuat <em>website</em> dari repository yang …</p>
                 <a class="readmore" href="/membuat-blog-di-github.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/zen-of-python.html" rel="bookmark"
-                           title="Permalink to Zen of Python">Zen of Python</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2020-04-30T19:57:00+08:00">
-                Published: Thu 30 April 2020
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/msiahaan.html">msiahaan</a>
-        </address>
-<p>In <a href="/category/python.html">Python</a>.</p>
-
-</footer><!-- /.post-info -->                <h1>Zen of Python</h1>
-<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">this</span>
-<span class="n">The</span> <span class="n">Zen</span> <span class="n">of</span> <span class="n">Python</span><span class="p">,</span> <span class="n">by</span> <span class="n">Tim</span> <span class="n">Peters</span>
-
-<span class="n">Beautiful</span> <span class="ow">is</span> <span class="n">better</span> <span class="n">than</span> <span class="n">ugly</span><span class="o">.</span>
-<span class="n">Explicit</span> <span class="ow">is</span> <span class="n">better</span> <span class="n">than</span> <span class="n">implicit</span><span class="o">.</span>
-<span class="n">Simple</span> <span class="ow">is</span> <span class="n">better</span> <span class="n">than</span> <span class="nb">complex</span><span class="o">.</span>
-<span class="n">Complex</span> <span class="ow">is</span> <span class="n">better</span> <span class="n">than</span> <span class="n">complicated</span><span class="o">.</span>
-<span class="n">Flat</span> <span class="ow">is</span> <span class="n">better</span> <span class="n">than</span> <span class="n">nested</span><span class="o">.</span>
-<span class="n">Sparse</span> <span class="ow">is</span> <span class="n">better</span> <span class="n">than</span> <span class="n">dense</span><span class="o">.</span>
-<span class="n">Readability</span> <span class="n">counts</span><span class="o">.</span>
-<span class="n">Special</span> <span class="n">cases</span> <span class="n">aren</span><span class="s1">&#39;t special enough …</span></code></pre></div>
-                <a class="readmore" href="/zen-of-python.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
